@@ -31,7 +31,7 @@
                 </ul>
             </li>
 
-            <li class="nav-item dropdown {{ Request::is('kategori') ? 'sidebar-item active' : '' }} || {{ Request::is('satuan') ? 'sidebar-item active' : '' }} || {{ Request::is('klasifikasi') ? 'sidebar-item active' : '' }} || {{ Request::is('rayon') ? 'sidebar-item active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('kategori') ? 'sidebar-item active' : '' }} || {{ Request::is('satuan') ? 'sidebar-item active' : '' }} || {{ Request::is('klasifikasi') ? 'sidebar-item active' : '' }} || {{ Request::is('rayon') ? 'sidebar-item active' : '' }} || {{ request()->is('dana') ? 'active' : '' }} || {{ request()->is('toko') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                 <i class="fas fa-retweet"></i>
                     <span>List Data</span>
@@ -41,8 +41,8 @@
                     <li class="{{ request()->is('satuan') ? 'active' : '' }}"><a class="nav-link" href="{{route('satuan')}}">List Satuan</a></li>
                     <li class="{{ request()->is('klasifikasi') ? 'active' : '' }}"><a class="nav-link" href="{{route('klasifikasi')}}">List Klasifikasi</a></li>
                     <li class="{{ request()->is('rayon') ? 'active' : '' }}"><a class="nav-link" href="{{route('rayon')}}">List Rayon</a></li>
-                    <li class=""><a class="nav-link" href="">Sumber dana</a></li>
-                    <li class=""><a class="nav-link" href="">Toko</a></li>
+                    <li class="{{ request()->is('dana') ? 'active' : '' }}"><a class="nav-link" href="{{route('dana')}}">Sumber dana</a></li>
+                    <li class=""><a class="nav-link" href="{{route('toko')}}">Toko</a></li>
                 </ul>
             </li>
             
@@ -56,7 +56,7 @@
                     <li class="{{ request()->is('ruangan') ? 'active' : '' }} || {{ request()->is('create_ruangan') ? 'active' : '' }}"><a class="nav-link" href="{{ route('ruangan') }}">Data Ruangan{{ request()->is('create_ruangan') ? ' ->Create' : '' }}</a></li>
                 </ul>
             </li>
-            <li class="nav-item dropdown ">
+            <li class="nav-item dropdown {{ request()->is('input') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                 <i class="fas fa-handshake"></i>
                     <span>Data Transaksi</span>
@@ -64,7 +64,7 @@
                 <ul class="dropdown-menu">
                     <li class=""><a class="nav-link" href="">Data Peminjaman</a></li>
                     <li class=""><a class="nav-link" href="">Data Barang Ruangan</a></li>
-                    <li class=""><a class="nav-link" href="">Data Barang Masuk</a></li>
+                    <li class="{{ request()->is('input') ? 'active' : '' }}"><a class="nav-link" href="{{ route('input') }}">Data Barang Masuk</a></li>
                     <li class=""><a class="nav-link" href="">Data Barang Keluar</a></li>
                 </ul>
             </li>

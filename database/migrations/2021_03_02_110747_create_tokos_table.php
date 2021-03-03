@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSatuansTable extends Migration
+class CreateTokosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateSatuansTable extends Migration
      */
     public function up()
     {
-        Schema::create('satuans', function (Blueprint $table) {
+        Schema::create('tokos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('jumlah');
+            $table->text('alamat');
+            $table->integer('notelp');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateSatuansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('satuans');
+        Schema::dropIfExists('tokos');
     }
 }
