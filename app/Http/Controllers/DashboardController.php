@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Barang;
+use App\{User,Barang,room};
 
 
 
@@ -14,7 +13,8 @@ class DashboardController extends Controller
     {
         $jumlah_user = User::all()->count();
         $barang = Barang::all()->count();
-        return view('dashboard', compact('jumlah_user','barang'));
+        $room = room::all()->count();
+        return view('dashboard', compact('jumlah_user','barang','room'));
     }
 
 }

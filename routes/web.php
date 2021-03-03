@@ -39,13 +39,13 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
         Route::get('/delete_user/{id}', 'UserController@destroy')->name('delete_user');
         Route::get('/{user}',function ($user)
         {
+            $url = 'User';
             $admin = User::where('Level',$user)->get();
             return view('user.admin',compact('admin'));
         })->name('admin');
     }); 
 
     //Relasi Satuan dan Kategori dengan Data Barang
-    Route::get('/create_barang', 'BarangController@create')->name('create_barang');
     Route::get('/kategori', 'BarangController@kategori')->name('kategori');
     Route::post('/kategori/create', 'BarangController@kategoristore')->name('kategorisave');
     Route::post('/satuan/create', 'BarangController@satuanstore')->name('satuansave');
@@ -53,10 +53,26 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     
     //Data Barang
     Route::get('/barang', 'BarangController@index')->name('barang');
+    Route::get('/create_barang', 'BarangController@create')->name('create_barang');
     Route::post('/barang/store', 'BarangController@store')->name('barangsave');
     Route::get('/barang/edit/{id}', 'BarangController@edit')->name('barangedit');
     Route::post('/barang/update/{id}', 'BarangController@update')->name('barangupdate');
     Route::get('/hpsbarang/{id}', 'BarangController@destroy')->name('hapusbarang');
+
+    //Relasi Sumber dana dan Toko pembelian dengan penginputan Barang
+    Route::get('/dana', 'InputController@dana')->name('dana');
+    Route::post('/dana/create', 'InputController@danastore')->name('danasave');
+    Route::post('/toko/create', 'InputController@tokostore')->name('tokosave');
+    Route::get('/toko', 'InputController@toko')->name('toko');
+
+    //CRUD penginputan Barang
+    Route::get('/input', 'InputController@index')->name('input');
+    Route::get('/input/create/Pemberi', 'InputController@create')->name('inputcreate');
+    Route::get('/input/create/pembelian', 'InputController@createtwo')->name('inputcreatetwo');
+    Route::post('/input/store', 'InputController@store')->name('inputsave');
+    Route::get('/input/edit/{id}', 'InputController@edit')->name('inputedit');
+    Route::post('/input/update/{id}', 'InputController@update')->name('inputupdate');
+    Route::get('/input/{id}', 'InputController@destroy')->name('inputhapus');
 
     //Data ruangan
     Route::get('/ruangan', 'RoomController@index')->name('ruangan');
