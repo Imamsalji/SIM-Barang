@@ -62,7 +62,7 @@
                     <span>Data Transaksi</span>
                     </a>
                 <ul class="dropdown-menu">
-                    <li class=""><a class="nav-link" href="">Data Peminjaman</a></li>
+                    <li class=""><a class="nav-link" href="{{ url('pinjamans') }}">Data Peminjaman</a></li>
                     <li class=""><a class="nav-link" href="">Data Barang Ruangan</a></li>
                     <li class=""><a class="nav-link" href="">Data Barang Masuk</a></li>
                     <li class=""><a class="nav-link" href="">Data Barang Keluar</a></li>

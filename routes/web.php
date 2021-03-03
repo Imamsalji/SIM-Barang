@@ -68,5 +68,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('/rayon', 'RoomController@rayon')->name('rayon');
     Route::post('/klasifikasi/store', 'RoomController@klasifikasistore')->name('klasifikasisave');
     Route::post('/rayon/store', 'RoomController@rayonstore')->name('rayonsave');
+
+    //pinjaman
+    Route::resource('pinjamans','PinjamanController');
+    Route::get('/pinjaman', 'PinjamanController@index')->name('pinjaman');
+
 });
 
