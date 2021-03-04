@@ -9,7 +9,7 @@
         <div class="col-12 col-md-12 col-lg-12">
            <div class="card">
                <div class="card-body">
-                 <form action="{{ route('kategorisave') }}" method="POST">
+                 <form action="{{ route('klasifikasisave') }}" method="POST">
                    @csrf
                     <div class="row">
 
@@ -26,12 +26,12 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label @error('name') class="text-danger" 
-                                @enderror>Masukan Klasifikasi @error('name')
+                                <label @error('klasifikasi') class="text-danger" 
+                                @enderror>Masukan Klasifikasi @error('klasifikasi')
                                     {{ $message }}
                                 @enderror
                                 </label>
-                                <input id="email" type="name" name="name" value="{{ old('name') }}" class="form-control">
+                                <input id="email" type="name" name="klasifikasi" value="{{ old('klasifikasi') }}" class="form-control">
                                 
                             </div>
                         </div>
