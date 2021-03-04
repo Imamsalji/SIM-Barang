@@ -8,6 +8,8 @@
                           @enderror
                         </label>
                         <input id="name" type="text" name="name" value="{{ old('name') ?? $input->name }}" class="form-control">
+                        <br>
+                        <a href="{{ route('create_barang') }}" class="btn btn-icon icon-left btn-primary">Klik Disini apabila barang tidak ada di list</a>
                       </div>
                     </div>
 

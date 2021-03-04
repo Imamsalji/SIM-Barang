@@ -76,11 +76,11 @@
                                 <td>{{ $item->nofaktur }}</td>
                                 <td>
                                 @if ($item->nama_pemberi == NULL || $item->nama_pemberi == '')
-                                    <a href="{{route('inputedit', $item->id)}}" class="btn btn-outline-warning">EditTOKO</a>
+                                    <a href="{{route('inputedittwo', $item->id)}}" class="btn btn-outline-warning">Edit</a>
                                 @else
-                                <a href="{{route('inputedit', $item->id)}}" class="btn btn-outline-warning">EditPEMBERI</a>
+                                <a href="{{route('inputedit', $item->id)}}" class="btn btn-outline-warning">Edit</a>
                                 @endif
-                                    <a href="{{route('inputhapus', $item->id)}}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">Delete</a>
+                                    <a href="{{url('input', $item->id)}}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

@@ -66,13 +66,15 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('/toko', 'InputController@toko')->name('toko');
 
     //CRUD penginputan Barang
+    Route::get('/input/{id}', 'InputController@destroy')->name('inputhapus');
     Route::get('/input', 'InputController@index')->name('input');
     Route::get('/input/create/Pemberi', 'InputController@create')->name('inputcreate');
     Route::get('/input/create/pembelian', 'InputController@createtwo')->name('inputcreatetwo');
     Route::post('/input/store', 'InputController@store')->name('inputsave');
     Route::get('/input/edit/{id}', 'InputController@edit')->name('inputedit');
+    Route::get('/input/edittwo/{id}', 'InputController@edittwo')->name('inputedittwo');
     Route::post('/input/update/{id}', 'InputController@update')->name('inputupdate');
-    Route::get('/input/{id}', 'InputController@destroy')->name('inputhapus');
+    
 
     //Data ruangan
     Route::get('/ruangan', 'RoomController@index')->name('ruangan');

@@ -8,7 +8,10 @@
                           @enderror
                         </label>
                         <input id="name" type="text" name="name" value="{{ old('name') ?? $input->name }}" class="form-control">
+                        <br>
+                        <a href="{{ route('create_barang') }}" class="btn btn-icon icon-left btn-primary">Klik Disini apabila barang tidak ada di list</a>
                       </div>
+                      
                     </div>
                     
 
@@ -25,7 +28,6 @@
                         <input id="nama_pemberi" type="text" name="nama_pemberi" value="{{ old('nama_pemberi') ?? $input->nama_pemberi }}" class="form-control">
                       </div>
                     </div>
-
                     <div class="col-md-6">
                       <div class="form-group">
                         <label @error('tgl_faktur') class="text-danger" 

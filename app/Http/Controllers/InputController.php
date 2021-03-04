@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\{input,dana,toko};
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 class InputController extends Controller
 {
@@ -66,6 +68,14 @@ class InputController extends Controller
         return view('input.edit', compact('input','dana','toko'));
     }
 
+    public function edittwo($id)
+    {
+        $input = input::find($id);
+        $dana = dana::all();
+        $toko = toko::all();
+        return view('input.edittwo', compact('input','dana','toko'));
+    }
+
     public function update(Request $request, $id)
     {
         $this->validasi($request);
@@ -77,7 +87,7 @@ class InputController extends Controller
     public function destroy($id)
     {
         $input = input::findorfail($id);
-        $input->delate();
+        $input->delete();
         return back()->with('delete', 'Data berhasil dihapus');
     }
 

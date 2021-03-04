@@ -73,4 +73,22 @@ class RoomController extends Controller
         return view('ruangan.rayon',compact('rayons'));
     }
     
+    public function klasifikasistore(Request $request)
+    {
+        klasifikasi::create([
+            'name' => $request->name,
+            'klasifikasi' => $request->klasifikasi
+        ]);
+        
+        return redirect('klasifikasi')->with('message', 'Data berhasil disimpan');
+    }
+
+    public function rayonstore(Request $request)
+    {
+        rayon::create([
+            'name' => $request->name
+        ]);
+        
+        return redirect('rayon')->with('message', 'Data berhasil disimpan');
+    }
 }

@@ -20,7 +20,7 @@
                           @enderror
                         </label>
                         <select class="form-control" name="kategori_id" id="kategori_id">
-                          <option value disable>Pilih  kategori</option>
+                          <option value disable>{{ request()->is('create_barang') ? 'Pilih Kategori' : $barang->kategori->name }}</option>
                           @foreach ($kategori as $item)
                           <option value="{{ $item->id  }}">{{ $item->name }}</option>
                           @endforeach
@@ -28,6 +28,7 @@
                       </div>
                     </div>
 
+                    
                     <div class="col-md-6">
                       <div class="form-group">
                         <label @error('nama_barang') class="text-danger" 
@@ -47,14 +48,14 @@
                           @enderror
                         </label>
                         <select class="form-control" name="satuan_id" id="satuan_id">
-                          <option value disable>Pilih  satuan_id</option>
+                          <option value disable>{{ request()->is('create_barang') ? 'Pilih Satuan' : $barang->satuan->name }}</option>
                           @foreach ($satuan as $item)
                           <option value="{{ $item->id }}">{{ $item->name }} -> {{ $item->jumlah }}</option>
                           @endforeach
                         </select>
                       </div>
                     </div>
-
+                    @if(auth()->user()->level == 'admin')
                     <div class="col-md-6">
                       <div class="form-group">
                         <label @error('kondisi_baik') class="text-danger" 
@@ -88,9 +89,10 @@
                       </div>
                     </div>
 
+                    @endif
                   </div>
                   <div class="card-footer text-right">
                       <button class="btn btn-primary mr-1" type="submit">Submit</button>
                       <button class="btn btn-secondary" type="reset">Reset</button>
-                      <a href="{{ route('user') }}" class="btn btn-icon icon-left btn-primary">Cancel</a>
+                      <a href="{{ route('barang') }}" class="btn btn-icon icon-left btn-primary">Cancel</a>
                   </div>
