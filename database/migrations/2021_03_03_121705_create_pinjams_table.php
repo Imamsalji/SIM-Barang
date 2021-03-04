@@ -17,7 +17,7 @@ class CreatePinjamsTable extends Migration
             $table->id();
             $table->string('pj');
             $table->string('ruang');
-            $table->string('barang');
+            $table->string('barang_id');
             $table->integer('jumlah');
             $table->string('kondisi');
             $table->timestamps();

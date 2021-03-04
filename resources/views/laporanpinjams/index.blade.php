@@ -60,7 +60,7 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $pinjam-> pj}}</td>
             <td>{{ $pinjam-> ruang}}</td>
-            <td>{{ $pinjam-> barang}}</td>
+            <td>{{ $pinjam-> barang->nama_barang}}</td>
             <td>{{ $pinjam-> jumlah}}</td>
             <td>{{ $pinjam-> kondisi}}</td>  
             <td>{{ $pinjam-> created_at}}</td>            

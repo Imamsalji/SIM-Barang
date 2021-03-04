@@ -15,4 +15,13 @@ class Barang extends Model
     {
         return $this->belongsTo(satuan::class);
     }
+    public function barangs()
+    {
+        return $this->hasMany(Pinjam::class);
+    }
+    public function laporan()
+    {
+        return $this->hasMany(LaporanPinjam::class);
+    }
+
 }

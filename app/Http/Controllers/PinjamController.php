@@ -16,8 +16,9 @@ class PinjamController extends Controller
      */
     public function index()
     {
-        $pinjams = Pinjam::all();
-        return view('pinjams.index',compact('pinjams'))    ;
+        
+        $pinjams = Pinjam::with('barangs')->latest()->get();
+        return view('pinjams.index',compact('pinjams'));
     }
 
     /**
@@ -27,9 +28,11 @@ class PinjamController extends Controller
      */
     public function create()
     {
-        $barangs=Barang::all();
+        $barangs = Barang::where('total', '>', 0)->get();
         $rooms = room::all(); 
+      
         return view('pinjams.create',compact('barangs','rooms', $barangs, $rooms));
+      
     }
 
     /**
@@ -43,14 +46,35 @@ class PinjamController extends Controller
         $request->validate([
              'pj' => 'required',
              'ruang' => 'required',
+             'barang_id' => 'required',
              'jumlah' => 'required',
              'kondisi' => 'required'
           
         ]);
-            Pinjam::create($request->all());
-            return redirect()->route('pinjam');
-            \Session::flash('sukses','Transaksi berhasil diupdate');
-    }
+    //Transaksi
+    $barangs = Barang::find($request->barang_id);
+    $sisa_stok = $barangs->total - $request->jumlah;
+    $barangs->update([
+        'total' => $sisa_stok
+    ]);
+    //End Transaksi
+
+        Pinjam::create([
+            'pj' => $request->pj,
+            'ruang' => $request->ruang,
+            'barang_id' => $request->barang_id,
+            'jumlah' => $request->jumlah,
+            'kondisi' => $request->kondisi,
+            
+        ]);
+
+        return redirect('pinjam')->with('message', 'Data berhasil disimpan');
+}
+
+            //Pinjam::create($request->all());
+            //return redirect()->route('pinjam');
+          
+
 
     /**
      * Display the specified resource.
@@ -98,10 +122,18 @@ class PinjamController extends Controller
      * @param  \App\Pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pinjam  $id)
+    public function destroy($id)
     {
-        $id->delete();
-  
+        //dd($id);
+        //Transaksi
+    $pinjam = Pinjam::find($id);
+    $barang = Barang::find($pinjam->barang_id);
+    $sisa_stok = $barang->total + $pinjam->jumlah;
+    $barang->update([
+        'total' => $sisa_stok
+    ]);
+    //End Transaksi
+    $pinjam->delete();
         return redirect()->route('pinjam')
                         ->with('success','Deleted successfully');
     }

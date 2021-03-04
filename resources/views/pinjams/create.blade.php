@@ -1,84 +1,114 @@
 @extends('layouts.master')
-  
+@section('title', 'Tambah Peminjaman')
+@section('pagetitle')
+    <h1>Create Peminjaman</h1>
+@endsection
 @section('content')
-<br>
-<br>
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            
+<div class="section-body">
+    <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+           <div class="card">
+               <div class="card-body">
+                 <form action="{{ route('pinjamsave') }}" method="POST">
+                   @csrf
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label @error('pj') class="text-danger" 
+                        @enderror>Penanggung Jawab @error('pj')
+                             {{ $message }}
+                          @enderror
+                        </label>
+                        <input id="pj" type="text" name="pj" value="{{ old('pj') }}" class="form-control">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label @error('ruang') class="text-danger" 
+                        @enderror>Ruangan @error('ruang')
+                             {{ $message }}
+                          @enderror
+                        </label>
+                        <select class="form-control" name="ruang" id="ruang">
+                            @foreach($rooms as $room)
+                                <option value="{{$room->noruang}}">{{$room->noruang}}</option>
+                            @endforeach
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label @error('barang_id') class="text-danger" 
+                        @enderror>Barang @error('barang_id')
+                             {{ $message }}
+                          @enderror
+                        </label>
+                        <select class="form-control" name="barang_id" id="barang_id">
+                            <option value disable>Pilih Barang</option>
+                            @foreach ($barangs as $item)
+                            <option value="{{ $item->id }}" data-stok="{{ $item->total }}">{{ $item->nama_barang }}</option>
+                            @endforeach
+                          </select>
+                      </div>
+                    </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label @error('jumlah') class="text-danger" 
+                          @enderror>Jumlah @error('jumlah')
+                               {{ $message }}
+                            @enderror
+                          </label>
+                          <input id="jumlah" type="number" name="jumlah" value="{{ old('jumlah') }}" class="form-control">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label @error('kondisi') class="text-danger" 
+                          @enderror>Kondisi @error('kondisi')
+                               {{ $message }}
+                            @enderror
+                          </label>
+                          <select class="form-control" name="kondisi" id="kondisi">
+                            <option value disable>Pilih Kondisi</option>
+                                <option value="baik">Baik</option>
+                                <option value="tidakbaik">Tidak Baik</option>
+                          </select>
+                        </div>
+                      </div>
+
+                  </div>
+                  <div class="card-footer text-right">
+                      <button class="btn btn-primary mr-1" type="submit">Submit</button>
+                      <button class="btn btn-secondary" type="reset">Reset</button>
+                  </div>
+                 </form>
+            </div>
         </div>
-       
     </div>
 </div>
-   
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-   
-<form action="{{ route('pinjamsave') }}" method="POST">
-    @csrf
-  
-     <div class="row">
-     
-     
-       
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Penanggung Jawab</strong>
-                <input class="form-control"name="pj"  >
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Ruang</strong>
-                <select class="form-control" name="ruang" id="ruang">
-                @foreach($rooms as $room)
-                <option value="{{$room->noruang}}">{{$room->noruang}}</option>
-                @endforeach
-                </select>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Barang</strong>
-                <select class="form-control" name="barang" id="barang">
-                @foreach($barangs as $barang)
-                <option value="{{$barang->nama_barang}}">{{$barang->nama_barang}}</option>
-                @endforeach
-                </select>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Jumlah</strong>
-                <input class="form-control"name="jumlah" type = "number" autocomplete = off>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Kondisi</strong>
-                <select class="form-control" name="kondisi">
-                    <option value="baik">Baik</option>
-                    <option value="tidakbaik">Tidak Baik</option>
-                </select>
-            </div>
-        </div>
-        
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Buat</button>
-        </div>
-    </div>
-    <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/jquery-ui.js') }}"></script>
-    <script type="text/css" src="{{ URL::asset('js/jquery.css') }}"></script>
-  
-</form>
 @endsection
+
+@push('page-scripts')
+<script>
+$(document).ready(function(){
+    $('select').change(function(){
+      let stok = $(this).find(':selected').data('total');
+      $('#jumlah').keyup(function(){
+          let jumlah = $('#jumlah').val()
+          if(jumlah > total){
+            $('#jumlah').val();
+            alert('Stok Tidak Mencukupi');
+          }else{
+            console.log(total);
+            }
+          }
+      })
+  })
+});
+</script>
+@endpush

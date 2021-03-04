@@ -48,14 +48,18 @@
                             @foreach ($pinjams as $pinjam)
                             <tr> 
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $pinjam-> pj}}</td>
-                                <td>{{ $pinjam-> ruang}}</td>
-                                <td>{{ $pinjam-> barang}}</td>
-                                <td>{{ $pinjam-> jumlah}}</td>
-                                <td>{{ $pinjam-> kondisi}}</td>
+                                <td>{{ $pinjam->pj}}</td>
+                                <td>{{ $pinjam->ruang}}</td>
+                                <td>{{ $pinjam->barangs->nama_barang}}</td>
+                                <td>{{ $pinjam->jumlah}}</td>
+                                <td>{{ $pinjam->kondisi}}</td>
                                 <td>
                                     <!-- <a href="{{route('pinjamedit', $pinjam->id)}}" class="btn btn-outline-warning">Edit</a> -->
-                                    <a href="{{route('pinjamhapus', $pinjam->id)}}" class="btn btn-outline-danger">Kembali</a>
+                                    <form action="{{route('pinjamhapus', $pinjam->id)}}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                            <button  class="btn btn-outline-danger">Kembali</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

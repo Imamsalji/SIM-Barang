@@ -91,7 +91,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::post('/pinjam/store', 'PinjamController@store')->name('pinjamsave');
     Route::get('/pinjam/edit/{id}', 'PinjamController@edit')->name('pinjamedit');
     Route::post('/pinjam/update/{id}', 'PinjamController@update')->name('pinjamupdate');
-    Route::get('/pinjam/{id}', 'PinjamController@destroy')->name('pinjamhapus');
+    Route::delete('/pinjam/{id}', 'PinjamController@destroy')->name('pinjamhapus');
 
     //laporan pinjam
     Route::get('/laporanpinjam','LaporanPinjamController@index')->name('laporanpinjam');
