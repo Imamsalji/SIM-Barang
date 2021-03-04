@@ -72,7 +72,6 @@ class RoomController extends Controller
         $rayons = rayon::all();
         return view('ruangan.rayon',compact('rayons'));
     }
-    
     public function klasifikasistore(Request $request)
     {
         klasifikasi::create([
@@ -84,6 +83,27 @@ class RoomController extends Controller
     }
 
     public function rayonstore(Request $request)
+    {
+        rayon::create([
+            'name' => $request->name
+        ]);
+        
+        return redirect('rayon')->with('message', 'Data berhasil disimpan');
+    }
+
+    
+    
+    public function klasifikasistores(Request $request)
+    {
+        klasifikasi::create([
+            'name' => $request->name,
+            'klasifikasi' => $request->klasifikasi
+        ]);
+        
+        return redirect('klasifikasi')->with('message', 'Data berhasil disimpan');
+    }
+
+    public function rayonstores(Request $request)
     {
         rayon::create([
             'name' => $request->name
