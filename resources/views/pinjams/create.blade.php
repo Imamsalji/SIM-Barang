@@ -8,9 +8,7 @@
         <div class="pull-left">
             
         </div>
-        <!-- <div class="pull-right">
-            <a class="btn btn-danger" href="{{ route('karyawans.index') }}"> Back</a>
-        </div> -->
+       
     </div>
 </div>
    
@@ -25,7 +23,7 @@
     </div>
 @endif
    
-<form action="{{ route('pinjamans.store') }}" method="POST">
+<form action="{{ route('pinjamsave') }}" method="POST">
     @csrf
   
      <div class="row">
@@ -35,31 +33,42 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Penanggung Jawab</strong>
-                <input class="form-control"name="pj" >
+                <input class="form-control"name="pj"  >
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Ruang</strong>
-                <input class="form-control"name="ruang">
+                <select class="form-control" name="ruang" id="ruang">
+                @foreach($rooms as $room)
+                <option value="{{$room->noruang}}">{{$room->noruang}}</option>
+                @endforeach
+                </select>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Barang</strong>
-                <input class="form-control"name="barang">
+                <select class="form-control" name="barang" id="barang">
+                @foreach($barangs as $barang)
+                <option value="{{$barang->nama_barang}}">{{$barang->nama_barang}}</option>
+                @endforeach
+                </select>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Jumlah</strong>
-                <input class="form-control"name="jumlah" >
+                <input class="form-control"name="jumlah" type = "number" autocomplete = off>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Kondisi</strong>
-                <input class="form-control"name="kondisi" >
+                <select class="form-control" name="kondisi">
+                    <option value="baik">Baik</option>
+                    <option value="tidakbaik">Tidak Baik</option>
+                </select>
             </div>
         </div>
         

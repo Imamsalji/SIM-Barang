@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePinjamansTable extends Migration
+class CreateLaporanpinjamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePinjamansTable extends Migration
      */
     public function up()
     {
-        Schema::create('pinjamans', function (Blueprint $table) {
+        Schema::create('laporanpinjams', function (Blueprint $table) {
             $table->id();
             $table->string('pj');
             $table->string('ruang');
@@ -31,6 +31,6 @@ class CreatePinjamansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pinjamans');
+        Schema::dropIfExists('laporanpinjams');
     }
 }

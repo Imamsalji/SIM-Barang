@@ -86,8 +86,19 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::post('/rayon/store', 'RoomController@rayonstore')->name('rayonsave');
 
     //pinjaman
-    Route::resource('pinjamans','PinjamanController');
-    Route::get('/pinjaman', 'PinjamanController@index')->name('pinjaman');
+    Route::get('/pinjam', 'PinjamController@index')->name('pinjam');
+    Route::get('/pinjam/create', 'PinjamController@create')->name('pinjamcreate');
+    Route::post('/pinjam/store', 'PinjamController@store')->name('pinjamsave');
+    Route::get('/pinjam/edit/{id}', 'PinjamController@edit')->name('pinjamedit');
+    Route::post('/pinjam/update/{id}', 'PinjamController@update')->name('pinjamupdate');
+    Route::get('/pinjam/{id}', 'PinjamController@destroy')->name('pinjamhapus');
+
+    //laporan pinjam
+    Route::get('/laporanpinjam','LaporanPinjamController@index')->name('laporanpinjam');
+    Route::get('/laporanpinjam/cari','LaporanPinjamController@cari');
+    Route::get('/laporanpinjam/print','LaporanPinjamController@print')->name('laporanpinjamprint');
+
+
 
 });
 

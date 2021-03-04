@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Tambah User')
 @section('pagetitle')
-    <h1>Tambah Kategori</h1>
+    <h1>Tambah Toko</h1>
 @endsection
 @section('content')
 

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Pinjaman;
+use App\Pinjam;
+use App\Barang;
+use App\room;
 
-class PinjamanController extends Controller
+class PinjamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,8 @@ class PinjamanController extends Controller
      */
     public function index()
     {
-        $pinjamans = Pinjaman::all();
-        return view('pinjamans.index');
+        $pinjams = Pinjam::all();
+        return view('pinjams.index',compact('pinjams'))    ;
     }
 
     /**
@@ -25,7 +27,9 @@ class PinjamanController extends Controller
      */
     public function create()
     {
-        return view('pinjamans.create');
+        $barangs=Barang::all();
+        $rooms = room::all(); 
+        return view('pinjams.create',compact('barangs','rooms', $barangs, $rooms));
     }
 
     /**
@@ -37,24 +41,24 @@ class PinjamanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'pj' => 'Mohon isi dengan angka atau huruf',
-            'ruang' => 'Mohon isi dengan angka atau huruf',
-            'jumlah' => 'Mohon isi dengan angka atau huruf',
-            'kondisi' => 'Mohon isi dengan angka atau huruf'
+             'pj' => 'required',
+             'ruang' => 'required',
+             'jumlah' => 'required',
+             'kondisi' => 'required'
           
-            ]);
-            Pinjaman::create($request->all());
-            return redirect()->route('pinjamans.index');
+        ]);
+            Pinjam::create($request->all());
+            return redirect()->route('pinjam');
             \Session::flash('sukses','Transaksi berhasil diupdate');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pinjaman  $pinjaman
+     * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function show(Pinjaman  $pinjaman)
+    public function show(pinjam  $pinjam)
     {
         //
     }
@@ -62,12 +66,14 @@ class PinjamanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pinjaman  $pinjaman
+     * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pinjaman $pinjaman)
+    public function edit(Pinjam $pinjam)
     {
-        return view('pinjamans.edit', compact('pinjaman'));
+        $barangs=Barang::get(); 
+        $rooms=room::get(); 
+        return view('pinjams.edit', compact('pinjam','barangs','rooms'));
 
     }
 
@@ -75,28 +81,28 @@ class PinjamanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pinjaman  $pinjaman
+     * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pinjaman $pinjaman)
+    public function update(Request $request, pinjam $pinjam)
     {
-        $pinjaman->update($request->all());
+        $pinjam->update($request->all());
   
-        return redirect()->route('pinjamans.index')
+        return redirect()->route('pinjams.index')
                         ->with('success','Updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pinjaman  $pinjaman
+     * @param  \App\Pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pinjaman $pinjaman)
+    public function destroy(Pinjam  $id)
     {
-        $pinjaman->delete();
+        $id->delete();
   
-        return redirect()->route('pinjamans.index')
+        return redirect()->route('pinjam')
                         ->with('success','Deleted successfully');
     }
 }

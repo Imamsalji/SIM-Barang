@@ -18,7 +18,7 @@
                 
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('pinjamans.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('pinjam') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
         </div>
     @endif
   
-    <form action="{{ route('pinjamans.update',$pinjaman->id) }}" method="POST">
+    <form action="{{ route('pinjamupdate', $pinjam->id) }}" method="POST">
     
         @csrf
         @method('PUT')
@@ -43,31 +43,31 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Penanggung jawab</strong>
-                    <input type="text" name="pj" value="{{ $pinjaman->pj }}" class="form-control">
+                    <input type="text" name="pj" value="{{ $pinjam->pj }}" class="form-control">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Ruang</strong>
-                    <input type="text" name="ruang" value="{{ $pinjaman->ruang }}" class="form-control">
+                    <input type="text" name="ruang" value="{{ $pinjam->ruang }}" class="form-control">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Barang</strong>
-                    <input type="text" name="barang" value="{{ $pinjaman->barang }}" class="form-control">
+                    <input type="text" name="barang" value="{{ $pinjam->barang }}" class="form-control">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Jumlah</strong>
-                    <input type="text" name="jumlah" value="{{ $pinjaman->jumlah }}" class="form-control">
+                    <input type="text" name="jumlah" value="{{ $pinjam->jumlah }}" class="form-control">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Kondisi</strong>
-                    <input type="text" name="kondisi" value="{{ $pinjaman->kondisi }}" class="form-control">
+                    <input type="text" name="kondisi" value="{{ $pinjam->kondisi }}" class="form-control">
                 </div>
             </div>
            

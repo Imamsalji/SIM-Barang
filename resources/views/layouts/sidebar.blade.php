@@ -62,7 +62,7 @@
                     <span>Data Transaksi</span>
                     </a>
                 <ul class="dropdown-menu">
-                    <li class=""><a class="nav-link" href="{{ url('pinjamans') }}">Data Peminjaman</a></li>
+                    <li class=""><a class="nav-link" href="{{ url('pinjam') }}">Data Peminjaman Barang</a></li>
                     <li class=""><a class="nav-link" href="">Data Barang Ruangan</a></li>
                     <li class="{{ request()->is('input') ? 'active' : '' }}"><a class="nav-link" href="{{ route('input') }}">Data Barang Masuk</a></li>
                     <li class=""><a class="nav-link" href="">Data Barang Keluar</a></li>
@@ -74,6 +74,7 @@
                     <span>Laporan</span>
                     </a>
                 <ul class="dropdown-menu">
+                    <li class=""><a class="nav-link" href="{{ url('laporanpinjam') }}">Laporan Pengembalian Barang</a></li>
                     <li class=""><a class="nav-link" href="">Laporan peruangan</a></li>
                     <li class=""><a class="nav-link" href="">laporan Barang Keluar</a></li>
                     <li class=""><a class="nav-link" href="">laporan Barang Masuk</a></li>
