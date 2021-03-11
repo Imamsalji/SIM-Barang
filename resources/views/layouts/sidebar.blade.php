@@ -34,7 +34,8 @@
             <li class="nav-item dropdown {{ Request::is('kategori') ? 'sidebar-item active' : '' }} || {{ Request::is('satuan') ? 'sidebar-item active' : '' }} || {{ Request::is('klasifikasi') ? 'sidebar-item active' : '' }} || {{ Request::is('rayon') ? 'sidebar-item active' : '' }} || {{ request()->is('dana') ? 'active' : '' }} || {{ request()->is('toko') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                 <i class="fas fa-retweet"></i>
-                    <span>List Data</span>
+                    <span>Data Dasar
+                    </span>
                     </a>
                 <ul class="dropdown-menu">
                     <li class="{{ request()->is('kategori') ? 'active' : '' }}"><a class="nav-link" href="{{route('kategori')}}">List Kategori</a></li>
@@ -46,14 +47,17 @@
                 </ul>
             </li>
             
-            <li class="nav-item dropdown {{ request()->is('barang') ? 'active' : '' }} || {{ request()->is('ruangan') ? 'active' : '' }} || {{ request()->is('create_barang') ? 'active' : '' }} || {{ request()->is('create_ruangan') ? ' active' : '' }}">
+            <li class="nav-item dropdown {{ request()->is('barang') ? 'active' : '' }} || {{ request()->is('ruangan') ? 'active' : '' }} || {{ request()->is('create_barang') ? 'active' : '' }} || {{ request()->is('create_ruangan') ? ' active' : '' }} || {{ request()->is('Tanah') ? ' active' : '' }} || {{ request()->is('habis') ? ' active' : '' }} || {{ request()->is('habis/create') ? ' active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                 <i class="fas fa-clipboard-list"></i>
-                    <span>Data Dasar</span>
+                    <span>Barang Masuk</span>
                     </a>
                 <ul class="dropdown-menu">
-                    <li class="{{ request()->is('barang') ? 'active' : '' }} || {{ request()->is('create_barang') ? 'active' : '' }}"><a class="nav-link" href="{{ route('barang') }}">Data Barang{{ request()->is('create_barang') ? ' ->Create' : '' }}</a></li>
-                    <li class="{{ request()->is('ruangan') ? 'active' : '' }} || {{ request()->is('create_ruangan') ? 'active' : '' }}"><a class="nav-link" href="{{ route('ruangan') }}">Data Ruangan{{ request()->is('create_ruangan') ? ' ->Create' : '' }}</a></li>
+                    <li class="{{ request()->is('Tanah') ? 'active' : '' }} || {{ request()->is('') ? 'active' : '' }}"><a class="nav-link" href="{{ route('Tanah.index') }}">Data Tanah</a></li>
+                    <li class="{{ request()->is('ruangan') ? 'active' : '' }} || {{ request()->is('create_ruangan') ? 'active' : '' }}"><a class="nav-link" href="{{ route('ruangan') }}">Bangunan dan Ruangan</a></li>
+                    <li class="{{ request()->is('barang') ? 'active' : '' }} || {{ request()->is('create_barang') ? 'active' : '' }}"><a class="nav-link" href="{{ route('barang') }}">Barang tidak habis pakai</a></li>
+                    <li class="{{ request()->is('habis') ? 'active' : '' }} || {{ request()->is('habis/create') ? 'active' : '' }}"><a class="nav-link" href="{{ route('habis.index') }}">Barang habis pakai</a></li>
+
                 </ul>
             </li>
             <li class="nav-item dropdown {{ request()->is('input') ? 'active' : '' }}">

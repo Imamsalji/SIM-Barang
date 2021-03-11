@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{room,rayon,klasifikasi};
+use App\{room,rayon,klasifikasi,Tanah,dana};
 
 class RoomController extends Controller
 {
@@ -13,29 +13,78 @@ class RoomController extends Controller
 	    return view ('ruangan.index',['rooms' => $rooms]);
     }
 
-    public function create()
+    public function create(room $room)
     {
         $klasifikasis = klasifikasi::all();
         $rayons = rayon::all();
-        return view('ruangan.create',compact('klasifikasis','rayons'));
+        $tanah = Tanah::all();
+        $dana = dana::all();
+        return view('ruangan.create',compact('klasifikasis','rayons','tanah','dana','room'));
     }
 
     public function store(Request $request)
     {
         $this->validasi($request);
-        
+        $luas = $request->panjang * $request->lebar;
         room::create([
             'klasifikasi_id' => $request->klasifikasi_id,
             'noruang' => $request->noruang,
             'nama_ruang' => $request->nama_ruang,
             'rayon_id' => $request->rayon_id,
+            'tanah_id' => $request->tanah_id,
             'pjruangan' => $request->pjruangan,
             'panjang' => $request->panjang,
             'lebar' => $request->lebar,
-            'luas' => $request->luas,
+            'regis' => $request->regis,
+            'dana_id' => $request->dana_id,
+            'kondisi_bangunan' => $request->kondisi_bangunan,
+            'bertingkat' => $request->bertingkat,
+            'beton' => $request->beton,
+            'luas' => $luas,
         ]);
 
         return redirect('ruangan')->with('message', 'Data berhasil disimpan');
+    }
+
+    public function edit($id)
+    {
+        $room = room::find($id);
+        $klasifikasis = klasifikasi::all();
+        $rayons = rayon::all();
+        $tanah = Tanah::all();
+        $dana = dana::all();
+        return view('ruangan.edit',compact('room','klasifikasis','rayons','tanah','dana'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validasi($request);
+        $luas = $request->panjang * $request->lebar;
+        $user = room::findorfail($id);
+        $user->update([
+            'klasifikasi_id' => $request->klasifikasi_id,
+            'noruang' => $request->noruang,
+            'nama_ruang' => $request->nama_ruang,
+            'rayon_id' => $request->rayon_id,
+            'tanah_id' => $request->tanah_id,
+            'pjruangan' => $request->pjruangan,
+            'panjang' => $request->panjang,
+            'lebar' => $request->lebar,
+            'regis' => $request->regis,
+            'dana_id' => $request->dana_id,
+            'kondisi_bangunan' => $request->kondisi_bangunan,
+            'bertingkat' => $request->bertingkat,
+            'beton' => $request->beton,
+            'luas' => $luas,
+        ]);
+        return redirect('/ruangan')->with('message', 'Data berhasil diupdate');
+    }
+
+    public function destroy($id)
+    {
+        $room = room::findorfail($id);
+        $room->delete();
+        return back()->with('delete', 'Data berhasil dihapus');
     }
 
     public function validasi(Request $request)
@@ -48,7 +97,11 @@ class RoomController extends Controller
             'pjruangan' => 'required',
             'panjang' => 'required',
             'lebar' => 'required',
-            'luas' => 'required',
+            'regis' => 'required',
+            'dana_id' => 'required',
+            'kondisi_bangunan' => 'required',
+            'bertingkat' => 'required',
+            'beton' => 'required',
         ],
         [
             'klasifikasi_id.required' => 'harus diisi!',
@@ -58,7 +111,11 @@ class RoomController extends Controller
             'pjruangan.required' => 'harus diisi!',
             'panjang.required' => 'harus diisi!',
             'lebar.required' => 'harus diisi!',
-            'luas.required' => 'harus diisi!',
+            'regis.required' => 'harus diisi!',
+            'dana_id.required' => 'harus diisi!',
+            'kondisi_bangunan.required' => 'harus diisi!',
+            'bertingkat.required' => 'harus diisi!',
+            'beton.required' => 'harus diisi!',
         ]);
     }
     public function klasifikasi()
@@ -72,6 +129,7 @@ class RoomController extends Controller
         $rayons = rayon::all();
         return view('ruangan.rayon',compact('rayons'));
     }
+    
     public function klasifikasistore(Request $request)
     {
         klasifikasi::create([
@@ -85,7 +143,8 @@ class RoomController extends Controller
     public function rayonstore(Request $request)
     {
         rayon::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'pjrayon' => $request->pjrayon
         ]);
         
         return redirect('rayon')->with('message', 'Data berhasil disimpan');

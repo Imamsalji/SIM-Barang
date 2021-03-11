@@ -80,6 +80,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('/ruangan', 'RoomController@index')->name('ruangan');
     Route::get('/create_ruangan', 'RoomController@create')->name('create_ruangan');
     Route::post('/ruangan/store', 'RoomController@store')->name('ruangansave');
+    Route::get('/ruangan/edit/{id}', 'RoomController@edit')->name('ruanganedit');
+    Route::post('/ruangan/update/{id}', 'RoomController@update')->name('ruanganupdate');
+    Route::get('/ruangan/delete/{id}', 'RoomController@destroy')->name('ruanganhapus');
+
 
     //relasi ke Ruangan
     Route::get('/klasifikasi', 'RoomController@klasifikasi')->name('klasifikasi');
@@ -100,6 +104,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('/laporanpinjam/cari','LaporanPinjamController@cari');
     Route::get('/laporanpinjam/print','LaporanPinjamController@print')->name('laporanpinjamprint');
 
+    Route::resource('Tanah','TanahController');
+    Route::post('/Tanah/update/{id}', 'TanahController@update')->name('Tanahupdate');
+
+    Route::resource('habis','HabisController');
 
 
 });

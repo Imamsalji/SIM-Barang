@@ -7,7 +7,7 @@
                              {{ $message }}
                           @enderror
                         </label>
-                        <input id="email" type="text" name="kode_barang" value="{{ old('kode_barang') ?? $barang->kode_barang }}" class="form-control">
+                        <input id="email" type="text" name="kode_barang" value="{{ old('kode_barang') ?? $habis->kode_barang }}" class="form-control">
                       </div>
                     </div>
                     
@@ -20,7 +20,7 @@
                           @enderror
                         </label>
                         <select class="form-control" name="kategori_id" id="kategori_id">
-                          <option value="{{ request()->is('create_barang') ? '' : $barang->kategori->id }}">{{ request()->is('create_barang') ? 'Pilih Kategori' : $barang->kategori->name }}</option>
+                          <option value="{{ request()->is('habis/create') ? '' : $habis->kategori->id }}">{{ request()->is('habis/create') ? 'Pilih Kategori' : $habis->kategori->name }}</option>
                           @foreach ($kategori as $item)
                           <option value="{{ $item->id  }}">{{ $item->name }}</option>
                           @endforeach
@@ -36,7 +36,7 @@
                              {{ $message }}
                           @enderror
                         </label>
-                        <input id="nama_barang" type="text" name="nama_barang" value="{{ old('nama_barang') ?? $barang->nama_barang }}" class="form-control">
+                        <input id="nama_barang" type="text" name="nama_barang" value="{{ old('nama_barang') ?? $habis->nama_barang }}" class="form-control">
                       </div>
                     </div>
 
@@ -48,7 +48,7 @@
                           @enderror
                         </label>
                         <select class="form-control" name="satuan_id" id="satuan_id">
-                          <option value="{{ request()->is('create_barang') ? '' : $barang->satuan->id }}">{{ request()->is('create_barang') ? 'Pilih Satuan' : $barang->satuan->name }}</option>
+                          <option value="{{ request()->is('habis/create') ? '' : $habis->satuan->id }}">{{ request()->is('habis/create') ? 'Pilih Satuan' : $habis->satuan->name }}</option>
                           @foreach ($satuan as $item)
                           <option value="{{ $item->id }}">{{ $item->name }} -> {{ $item->jumlah }}</option>
                           @endforeach
@@ -68,7 +68,7 @@
                           @enderror
                         </label>
                         <select class="form-control" name="toko_id" id="toko_id">
-                          <option value="{{ request()->is('create_barang') ? '' : $barang->toko->id }}">{{ request()->is('create_barang') ? 'Pilih Toko' : $barang->toko->name }}</option>
+                          <option value="{{ request()->is('habis/create') ? '' : $habis->toko->id }}">{{ request()->is('habis/create') ? 'Pilih Toko' : $habis->toko->name }}</option>
                           @foreach ($toko as $item)
                           <option value="{{ $item->id }}">{{ $item->name }} </option>
                           @endforeach
@@ -84,7 +84,7 @@
                           @enderror
                         </label>
                         <select class="form-control" name="dana_id" id="dana_id">
-                          <option value="{{ request()->is('create_barang') ? '' : $barang->dana->id }}">{{ request()->is('create_barang') ? 'Pilih Sumber dana' : $barang->dana->pemberi }}</option>
+                          <option value="{{ request()->is('habis/create') ? '' : $habis->dana->id }}">{{ request()->is('habis/create') ? 'Pilih Sumber dana' : $habis->dana->pemberi }}</option>
                           @foreach ($dana as $item)
                           <option value="{{ $item->id }}">{{ $item->pemberi }} </option>
                           @endforeach
@@ -100,9 +100,9 @@
                           @enderror
                         </label>
                         <select class="form-control" name="room_id" id="room_id">
-                          <option value="{{ request()->is('create_barang') ? '' : $barang->room->id }}">{{ request()->is('create_barang') ? 'Pilih Satuan' : $barang->room->nama_ruang }}</option>
+                          <option value="{{ request()->is('habis/create') ? '' : $habis->room->id }}">{{ request()->is('habis/create') ? 'Pilih Nama Ruangan' : $habis->room->nama_ruang }}</option>
                           @foreach ($room as $item)
-                          <option value="{{ $item->id }}">{{ $item->nama_ruang }} </option>
+                          <option value="{{ $item->id }}">{{ $item->nama_ruang }} - {{ $item->noruang }} </option>
                           @endforeach
                         </select>
                       </div>
@@ -115,7 +115,7 @@
                              {{ $message }}
                           @enderror
                         </label>
-                        <input id="spek" type="text" name="spek" value="{{ old('spek') ?? $barang->spek }}" class="form-control">
+                        <input id="spek" type="text" name="spek" value="{{ old('spek') ?? $habis->spek }}" class="form-control">
                       </div>
                     </div>
 
@@ -126,7 +126,7 @@
                              {{ $message }}
                           @enderror
                         </label>
-                        <input id="merk" type="text" name="merk" value="{{ old('merk') ?? $barang->merk }}" class="form-control">
+                        <input id="merk" type="text" name="merk" value="{{ old('merk') ?? $habis->merk }}" class="form-control">
                       </div>
                     </div>
 
@@ -137,7 +137,7 @@
                              {{ $message }}
                           @enderror
                         </label>
-                        <input id="no_seri" type="text" name="no_seri" value="{{ old('no_seri') ?? $barang->no_seri }}" class="form-control">
+                        <input id="no_seri" type="text" name="no_seri" value="{{ old('no_seri') ?? $habis->no_seri }}" class="form-control">
                       </div>
                     </div>
 
@@ -148,7 +148,7 @@
                              {{ $message }}
                           @enderror
                         </label>
-                        <input id="tgl_masuk" type="date" name="tgl_masuk" value="{{ old('tgl_masuk') ?? $barang->tgl_masuk }}" class="form-control">
+                        <input id="tgl_masuk" type="date" name="tgl_masuk" value="{{ old('tgl_masuk') ?? $habis->tgl_masuk }}" class="form-control">
                       </div>
                     </div>
 
@@ -159,7 +159,7 @@
                              {{ $message }}
                           @enderror
                         </label>
-                        <input id="no_faktur" type="text" name="no_faktur" value="{{ old('no_faktur') ?? $barang->no_faktur }}" class="form-control">
+                        <input id="no_faktur" type="text" name="no_faktur" value="{{ old('no_faktur') ?? $habis->no_faktur }}" class="form-control">
                       </div>
                     </div>
 
@@ -170,7 +170,7 @@
                              {{ $message }}
                           @enderror
                         </label>
-                        <input id="harga" type="text" name="harga" value="{{ old('harga') ?? $barang->harga }}" class="form-control">
+                        <input id="harga" type="text" name="harga" value="{{ old('harga') ?? $habis->harga }}" class="form-control">
                       </div>
                     </div>
                     

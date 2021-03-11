@@ -20,6 +20,7 @@ class CreateInputsTable extends Migration
             $table->string('nama_pemberi');
             $table->foreignId('dana_id')->nullable();
             $table->foreignId('toko_id')->nullable();
+            $table->foreignId('jumlah')->nullable();
             $table->string('tgl_faktur');
             $table->string('nofaktur');
             $table->timestamps();

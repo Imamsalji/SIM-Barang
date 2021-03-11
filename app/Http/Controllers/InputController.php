@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\{input,dana,toko};
+use App\{input,dana,toko,Barang};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,13 +19,15 @@ class InputController extends Controller
     {
         $dana = dana::all();
         $toko = toko::all();
-        return view('input.create',compact('dana','toko','input'));
+        $barang = Barang::all();
+        return view('input.create',compact('dana','toko','input','barang'));
     }
     public function createtwo(Input $input)
     {
         $dana = dana::all();
+        $barang = Barang::all();
         $toko = toko::all();
-        return view('input.createtwo',compact('dana','toko','input'));
+        return view('input.createtwo',compact('dana','toko','input','barang'));
     }
 
     public function store(Request $request)
@@ -39,6 +41,7 @@ class InputController extends Controller
                 'nama_pemberi' => $request->nama_pemberi,
                 'dana_id' => $request->dana_id,
                 'toko_id' => $request->toko_id,
+                'jumlah' => $request->jumlah,
                 'tgl_faktur' => $request->tgl_faktur,
                 'nofaktur' => $request->nofaktur,
             ]);
@@ -53,6 +56,7 @@ class InputController extends Controller
                 'nama_pemberi' => $request->nama_pemberi,
                 'dana_id' => $request->dana_id,
                 'toko_id' => $request->toko_id,
+                'jumlah' => $request->jumlah,
                 'tgl_faktur' => $request->tgl_faktur,
                 'nofaktur' => $request->nofaktur,
             ]);
@@ -62,18 +66,21 @@ class InputController extends Controller
 
     public function edit($id)
     {
+
         $input = input::find($id);
         $dana = dana::all();
+        $barang = Barang::all();
         $toko = toko::all();
-        return view('input.edit', compact('input','dana','toko'));
+        return view('input.edit', compact('input','dana','toko','barang'));
     }
 
     public function edittwo($id)
     {
         $input = input::find($id);
         $dana = dana::all();
+        $barang = Barang::all();
         $toko = toko::all();
-        return view('input.edittwo', compact('input','dana','toko'));
+        return view('input.edittwo', compact('input','dana','toko','barang'));
     }
 
     public function update(Request $request, $id)
@@ -118,6 +125,7 @@ class InputController extends Controller
             'name' => $request->name,
             'alamat' => $request->alamat,
             'notelp' => $request->notelp,
+            'pimpinan' => $request->pimpinan,
         ]);
 
         return redirect('toko')->with('message', 'Data berhasil disimpan');

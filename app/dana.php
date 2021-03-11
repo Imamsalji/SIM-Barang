@@ -11,4 +11,12 @@ class dana extends Model
     {
         return $this->hasMany(input::class);
     }
+    public function rooms()
+    {
+        return $this->hasMany(room::class);
+    }
+    public function barangs()
+    {
+        return $this->hasMany(barang::class);
+    }
 }

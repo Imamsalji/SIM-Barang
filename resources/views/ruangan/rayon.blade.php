@@ -23,6 +23,15 @@
                         <input id="email" type="name" name="name" value="{{ old('name') }}" class="form-control">
                         
                       </div>
+                      <div class="form-group">
+                        <label @error('pjrayon') class="text-danger" 
+                        @enderror>Masukan Nama Rayon @error('pjrayon')
+                             {{ $message }}
+                          @enderror
+                        </label>
+                        <input id="pjrayon" type="text" name="pjrayon" value="{{ old('pjrayon') }}" class="form-control">
+                        
+                      </div>
                         <button class="btn btn-primary " type="submit">Submit</button>
                     </div>
 
@@ -56,6 +65,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Rayon</th>
+                                <th>Penanggung Jawab</th>
                                 <th>aksi</th>
                             </tr>
                         </thead>
@@ -64,6 +74,7 @@
                             <tr> 
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->name }}</td>
+                                <td>{{ $item->pjrayon }}</td>
                                 <td>
                                 <a href="{{url('delete_user', $item->id)}}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">Delete</a>
                                 </td>

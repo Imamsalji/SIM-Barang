@@ -53,6 +53,7 @@
                                 <th>Yang memberikan</th>
                                 <th>Sumber Dana</th>
                                 <th>Toko yang bersangkutan</th>
+                                <th>Jumlah Barang yang Masuk</th>
                                 <th>Tanggal Barang masuk</th>
                                 <th>Nomor Faktur</th>
                                 <th>Action</th>
@@ -62,16 +63,21 @@
                             @foreach ($inputs as $item)
                             <tr> 
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->barang->nama_barang }}</td>
                                 <td>{{ $item->jenis_masuk }}</td>
+                                @if ($item->nama_pemberi == NULL)
+                                <td>hasil pembelian</td>
+                                @else
                                 <td>{{ $item->nama_pemberi }}</td>
+                                @endif
                                 @if ($item->dana_id == NULL)
-                                <td>--</td>
-                                <td>--</td>
+                                <td>Hasil Pemberian</td>
+                                <td>Hasil pemberian</td>
                                 @else
                                 <td>{{ $item->dana->pemberi }}</td>
                                 <td>{{ $item->toko->name }}</td>
                                 @endif
+                                <td>{{ $item->jumlah }}</td>
                                 <td>{{ $item->tgl_faktur }}</td>
                                 <td>{{ $item->nofaktur }}</td>
                                 <td>
