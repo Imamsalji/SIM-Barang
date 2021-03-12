@@ -7,8 +7,16 @@
                              {{ $message }}
                           @enderror
                         </label>
-                        <input id="name" type="text" name="name" value="{{ old('name') ?? $input->name }}" class="form-control">
+                        <select class="form-control" name="name" id="name">
+                          <option value disable>{{ request()->is('input/create/Pemberi') ? 'Pilih Barang' : $input->toko->name }}</option>
+                          @foreach ($barang as $item)
+                          <option value="{{ $item->id }}">{{ $item->nama_barang }} </option>
+                          @endforeach
+                        </select>
+                        <br>
+                        <a href="{{ route('create_barang') }}" class="btn btn-icon icon-left btn-primary">Klik Disini apabila barang tidak ada di list</a>
                       </div>
+                      
                     </div>
                     
 
@@ -25,7 +33,6 @@
                         <input id="nama_pemberi" type="text" name="nama_pemberi" value="{{ old('nama_pemberi') ?? $input->nama_pemberi }}" class="form-control">
                       </div>
                     </div>
-
                     <div class="col-md-6">
                       <div class="form-group">
                         <label @error('tgl_faktur') class="text-danger" 
@@ -34,6 +41,17 @@
                           @enderror
                         </label>
                         <input id="tgl_faktur" type="date" name="tgl_faktur" value="{{ old('tgl_faktur') ?? $input->tgl_faktur}}" class="form-control">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label @error('jumlah') class="text-danger" 
+                        @enderror>jumlah @error('kondisi_rusak')
+                             {{ $message }}
+                          @enderror
+                        </label>
+                        <input id="jumlah" type="number" name="jumlah" value="{{ old('jumlah') ?? $input->jumlah}}" class="form-control">
                       </div>
                     </div>
 

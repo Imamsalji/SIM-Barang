@@ -49,7 +49,20 @@
                         <input id="notelp" type="number" name="notelp" value="{{ old('notelp') }}" class="form-control">
                         
                       </div>
-                        <button class="btn btn-primary " type="submit">Submit</button>
+                      <button class="btn btn-primary " type="submit">Submit</button>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label @error('pimpinan') class="text-danger" 
+                        @enderror>Masukan nama pimpinan @error('pimpinan')
+                             {{ $message }}
+                          @enderror
+                        </label>
+                        <input id="pimpinan" type="text" name="pimpinan" value="{{ old('pimpinan') }}" class="form-control">
+                        
+                      </div>
+                      
                     </div>
 
                   </div>
@@ -82,6 +95,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Kategori</th>
+                                <th>pimpinan</th>
                                 <th>Alamat</th>
                                 <th>notelp</th>
                                 <th>aksi</th>
@@ -92,6 +106,7 @@
                             <tr> 
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->name }}</td>
+                                <td>{{ $item->pimpinan }}</td>
                                 <td>{{ $item->alamat }}</td>
                                 <td>{{ $item->notelp }}</td>
                                 <td>

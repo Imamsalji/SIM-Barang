@@ -2,33 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use App\{Habis};
+use App\{kategori,satuan,toko,dana,room};
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\{Barang,kategori,satuan,toko,dana,room};
 
-class BarangController extends Controller
+class HabisController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $barangs = Barang::all();
-	    return view ('barang.index',['barangs' => $barangs]);
+        $habis = Habis::all();
+	    return view ('habis.index',compact('habis'));
     }
 
-    public function create(Barang $barang)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Habis $habis)
     {
         $kategori = kategori::all();
         $satuan = satuan::all();
         $toko = toko::all();
         $dana = dana::all();
         $room = room::all();
-        return view('barang.create',compact('kategori','satuan','barang','toko','dana','room'));
+        return view('habis.create',compact('kategori','satuan','habis','toko','dana','room'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        
         $this->validasi($request);
-        Barang::create([
+        Habis::create([
             'kode_barang' => $request->kode_barang,
             'kategori_id' => $request->kategori_id,
             'nama_barang' => $request->nama_barang,
@@ -44,70 +59,61 @@ class BarangController extends Controller
             'harga' => $request->harga,
         ]);
 
-        return redirect('barang')->with('message', 'Data berhasil disimpan');
+        return redirect('habis')->with('message', 'Data berhasil disimpan');
     }
 
-    public function kategori()
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Habis  $habis
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Habis $habis)
     {
-        $kategoris = kategori::all();
-        return view('barang.kategori',compact('kategoris'));
+        //
     }
 
-    public function satuan()
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Habis  $habis
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Habis $habi)
     {
-        $satuans = satuan::all();
-        return view('barang.satuan',compact('satuans'));
-    }
-
-    public function kategoristore(Request $request)
-    {
-        $kategori = kategori::where('name',$request->name)->first();
-        if ($kategori === NULL) {
-            dd($request->name);
-        }else {
-            dd($kategori->name);
-        }
-
-        kategori::create([
-            'name' => $request->name
-        ]);
-
-        return redirect('create_barang')->with('message', 'Data berhasil disimpan');
-    }
-
-    public function satuanstore(Request $request)
-    {
-        satuan::create([
-            'name' => $request->name,
-            'jumlah' => $request->jumlah
-        ]);
-        
-        return redirect('create_barang')->with('message', 'Data berhasil disimpan');
-    }
-
-    public function edit($id)
-    {
-        $barang = Barang::find($id);
+        $habis = $habi;
         $kategori = kategori::all();
         $satuan = satuan::all();
         $toko = toko::all();
         $dana = dana::all();
         $room = room::all();
-        return view('barang.edit', compact('barang','kategori','satuan','toko','dana','room'));
+        return view('habis.edit', compact('habis','kategori','satuan','toko','dana','room'));
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Habis  $habis
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Habis $habi)
     {
         $this->validasi($request);
-        $barang = Barang::findorfail($id);
-        $barang->update($request->all());
-        return redirect('barang')->with('message', 'Data berhasil diupdate');
+        $habi->update($request->all());
+        return redirect()->route('habis.index')
+                        ->with('message','Data Berhasil di Update');
     }
 
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Habis  $habis
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Habis $habi)
     {
-        $barang = Barang::findorfail($id);
-        $barang->delete();
+        $habi->delete();  
         return back()->with('delete', 'Data berhasil dihapus');
     }
 

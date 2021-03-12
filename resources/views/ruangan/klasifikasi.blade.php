@@ -31,7 +31,7 @@
                                     {{ $message }}
                                 @enderror
                                 </label>
-                                <input id="email" type="name" name="klasifikasi" value="{{ old('klasifikasi') }}" class="form-control">
+                                <input id="emaklasifikasiil" type="text" name="klasifikasi" value="{{ old('klasifikasi') }}" class="form-control">
                                 
                             </div>
                         </div>

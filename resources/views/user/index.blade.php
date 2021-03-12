@@ -49,7 +49,7 @@
                     <td>{{ $item->email }}</td>
                     <td>
                         <a href="{{url('users/edit_user', $item->id)}}" class="btn btn-outline-warning">Edit</a>
-                        <a href="{{url('delete_user', $item->id)}}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">Delete</a>
+                        <a href="{{url('users/delete_user', $item->id)}}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">Delete</a>
                     </td>
                 </tr>
                 @endforeach

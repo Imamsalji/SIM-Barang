@@ -53,6 +53,7 @@
                                 <th>Yang memberikan</th>
                                 <th>Sumber Dana</th>
                                 <th>Toko yang bersangkutan</th>
+                                <th>Jumlah Barang yang Masuk</th>
                                 <th>Tanggal Barang masuk</th>
                                 <th>Nomor Faktur</th>
                                 <th>Action</th>
@@ -62,25 +63,30 @@
                             @foreach ($inputs as $item)
                             <tr> 
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->barang->nama_barang }}</td>
                                 <td>{{ $item->jenis_masuk }}</td>
+                                @if ($item->nama_pemberi == NULL)
+                                <td>hasil pembelian</td>
+                                @else
                                 <td>{{ $item->nama_pemberi }}</td>
+                                @endif
                                 @if ($item->dana_id == NULL)
-                                <td>--</td>
-                                <td>--</td>
+                                <td>Hasil Pemberian</td>
+                                <td>Hasil pemberian</td>
                                 @else
                                 <td>{{ $item->dana->pemberi }}</td>
                                 <td>{{ $item->toko->name }}</td>
                                 @endif
+                                <td>{{ $item->jumlah }}</td>
                                 <td>{{ $item->tgl_faktur }}</td>
                                 <td>{{ $item->nofaktur }}</td>
                                 <td>
                                 @if ($item->nama_pemberi == NULL || $item->nama_pemberi == '')
-                                    <a href="{{route('inputedit', $item->id)}}" class="btn btn-outline-warning">EditTOKO</a>
+                                    <a href="{{route('inputedittwo', $item->id)}}" class="btn btn-outline-warning">Edit</a>
                                 @else
-                                <a href="{{route('inputedit', $item->id)}}" class="btn btn-outline-warning">EditPEMBERI</a>
+                                <a href="{{route('inputedit', $item->id)}}" class="btn btn-outline-warning">Edit</a>
                                 @endif
-                                    <a href="{{route('inputhapus', $item->id)}}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">Delete</a>
+                                    <a href="{{url('input', $item->id)}}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

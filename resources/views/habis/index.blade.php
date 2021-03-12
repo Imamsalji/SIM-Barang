@@ -1,14 +1,14 @@
 @extends('layouts.master')
 @section('title', 'Data Barang')
 @section('pagetitle')
-    <h1>Data Barang Tidak Habis Pakai</h1>
+    <h1>Data Barang Habis Pakai</h1>
 @endsection
 @section('content')
 
 <div class="section-body">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
-           <a href="{{ route('create_barang') }}" class="btn btn-outline-primary"><i class="far fa-edit"></i>Tambah Data</a>
+           <a href="{{ route('habis.create') }}" class="btn btn-outline-primary"><i class="far fa-edit"></i>Tambah Data</a>
            <a href="{{ route('kategori') }}" class="btn btn-outline-primary"><i class="far fa-edit"></i>Tambah Kategori</a>
         <a href="{{ route('satuan') }}" class="btn btn-outline-primary"><i class="far fa-edit"></i>Tambah Satuan</a>
            <hr>
@@ -53,7 +53,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($barangs as $item)
+                            @foreach ($habis as $item)
                             <tr> 
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->kode_barang }}</td>
@@ -68,8 +68,12 @@
                                 <td>{{ $item->dana->pemberi }}</td>
                                 <td>{{ $item->kategori->name }}</td>
                                 <td>
-                                    <a href="{{route('barangedit', $item->id)}}" class="btn btn-outline-warning">Edit</a>
-                                    <a href="{{route('hapusbarang', $item->id)}}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">Delete</a>
+                                    <a href="{{route('habis.edit', $item->id)}}" class="btn btn-outline-warning">Edit</a>
+                                    <form action="{{ route('habis.destroy',$item->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

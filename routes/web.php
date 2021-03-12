@@ -66,18 +66,24 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('/toko', 'InputController@toko')->name('toko');
 
     //CRUD penginputan Barang
+    Route::get('/input/{id}', 'InputController@destroy')->name('inputhapus');
     Route::get('/input', 'InputController@index')->name('input');
     Route::get('/input/create/Pemberi', 'InputController@create')->name('inputcreate');
     Route::get('/input/create/pembelian', 'InputController@createtwo')->name('inputcreatetwo');
     Route::post('/input/store', 'InputController@store')->name('inputsave');
     Route::get('/input/edit/{id}', 'InputController@edit')->name('inputedit');
+    Route::get('/input/edittwo/{id}', 'InputController@edittwo')->name('inputedittwo');
     Route::post('/input/update/{id}', 'InputController@update')->name('inputupdate');
-    Route::get('/input/{id}', 'InputController@destroy')->name('inputhapus');
+    
 
     //Data ruangan
     Route::get('/ruangan', 'RoomController@index')->name('ruangan');
     Route::get('/create_ruangan', 'RoomController@create')->name('create_ruangan');
     Route::post('/ruangan/store', 'RoomController@store')->name('ruangansave');
+    Route::get('/ruangan/edit/{id}', 'RoomController@edit')->name('ruanganedit');
+    Route::post('/ruangan/update/{id}', 'RoomController@update')->name('ruanganupdate');
+    Route::get('/ruangan/delete/{id}', 'RoomController@destroy')->name('ruanganhapus');
+
 
     //relasi ke Ruangan
     Route::get('/klasifikasi', 'RoomController@klasifikasi')->name('klasifikasi');
@@ -98,6 +104,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('/laporanpinjam/cari','LaporanPinjamController@cari');
     Route::get('/laporanpinjam/print','LaporanPinjamController@print')->name('laporanpinjamprint');
 
+    Route::resource('Tanah','TanahController');
+    Route::post('/Tanah/update/{id}', 'TanahController@update')->name('Tanahupdate');
+
+    Route::resource('habis','HabisController');
 
 
 });

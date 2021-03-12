@@ -42,9 +42,13 @@
                                 <th>nama_ruang</th>
                                 <th>rayon_id</th>
                                 <th>pjruangan</th>
-                                <th>panjang</th>
-                                <th>lebar</th>
-                                <th>luas</th>
+                                <th>panjang ruangan</th>
+                                <th>lebar ruangan</th>
+                                <th>luas ruangan</th>
+                                <th>Status Tanah</th>
+                                <th>Luas Tanah</th>
+                                <th>Kode Tanah</th>
+                                <th>No Sertifikat/No seri</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -60,9 +64,13 @@
                                 <td>{{ $item->panjang }}</td>
                                 <td>{{ $item->lebar }}</td>
                                 <td>{{ $item->luas }}</td>
+                                <td>{{ $item->tanah->status_tanah }}</td>
+                                <td>{{ $item->tanah->luas }}</td>
+                                <td>{{ $item->tanah->kode_tanah }}</td>
+                                <td>{{ $item->tanah->no_sertifikat }}</td>
                                 <td>
-                                    <a href="{{url('edit_user', $item->id)}}" class="btn btn-outline-warning">Edit</a>
-                                    <a href="{{url('delete_user', $item->id)}}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">Delete</a>
+                                    <a href="{{url('/ruangan/edit', $item->id)}}" class="btn btn-outline-warning">Edit</a>
+                                    <a href="{{url('/ruangan/delete', $item->id)}}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">Delete</a>
                                 </td>
                             </tr>
                             @endforeach
