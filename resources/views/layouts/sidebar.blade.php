@@ -46,11 +46,21 @@
                     <li class=""><a class="nav-link" href="{{route('toko')}}">Toko</a></li>
                 </ul>
             </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+                <i class="fas fa-retweet"></i>
+                    <span>Perbaikan</span>
+                    </a>
+                <ul class="dropdown-menu">
+                    <li class=""><a class="nav-link" href="">Perbaikan</a></li>
+                   
+                </ul>
+            </li>
             
             <li class="nav-item dropdown {{ request()->is('barang') ? 'active' : '' }} || {{ request()->is('ruangan') ? 'active' : '' }} || {{ request()->is('create_barang') ? 'active' : '' }} || {{ request()->is('create_ruangan') ? ' active' : '' }} || {{ request()->is('Tanah') ? ' active' : '' }} || {{ request()->is('habis') ? ' active' : '' }} || {{ request()->is('habis/create') ? ' active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
-                <i class="fas fa-clipboard-list"></i>
-                    <span>Barang Masuk</span>
+                <i class="fas fa-handshake"></i>
+                    <span>Transaksi Barang Masuk</span>
                     </a>
                 <ul class="dropdown-menu">
                     <li class="{{ request()->is('Tanah') ? 'active' : '' }} || {{ request()->is('') ? 'active' : '' }}"><a class="nav-link" href="{{ route('Tanah.index') }}">Data Tanah</a></li>
@@ -63,13 +73,12 @@
             <li class="nav-item dropdown {{ request()->is('input') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                 <i class="fas fa-handshake"></i>
-                    <span>Data Transaksi</span>
+                    <span>Transaksi Barang Keluar</span>
                     </a>
                 <ul class="dropdown-menu">
                     <li class=""><a class="nav-link" href="{{ url('pinjam') }}">Data Peminjaman Barang</a></li>
-                    <li class=""><a class="nav-link" href="">Data Barang Ruangan</a></li>
-                    <li class="{{ request()->is('input') ? 'active' : '' }}"><a class="nav-link" href="{{ route('input') }}">Data Barang Masuk</a></li>
-                    <li class=""><a class="nav-link" href="">Data Barang Keluar</a></li>
+                    <li class=""><a class="nav-link" href="">Data Mutasi</a></li>
+                    <li class=""><a class="nav-link" href="">Penghapusan Barang</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown ">
@@ -79,13 +88,17 @@
                     </a>
                 <ul class="dropdown-menu">
                     <li class=""><a class="nav-link" href="{{ url('laporanpinjam') }}">Laporan Pengembalian Barang</a></li>
-                    <li class=""><a class="nav-link" href="">Laporan peruangan</a></li>
-                    <li class=""><a class="nav-link" href="">laporan Barang Keluar</a></li>
-                    <li class=""><a class="nav-link" href="">laporan Barang Masuk</a></li>
+                    <li class=""><a class="nav-link" href="">Laporan Barang Habis Pakai</a></li>
+                    <li class=""><a class="nav-link" href="">Laporan Barang Tidak Habis Pakai</a></li>
+                    <li class=""><a class="nav-link" href="">Laporan Tanah</a></li>
+                    <li class=""><a class="nav-link" href="">Laporan Bangunan dan Ruangan</a></li>
+                    <li class=""><a class="nav-link" href="">Laporan Mutasi</a></li>
+                    <li class=""><a class="nav-link" href="">Laporan Penghapusan Barang</a></li>
                     <li class=""><a class="nav-link" href="">Cetak Lebel</a></li>
                     <li class=""><a class="nav-link" href="">Scan QrCode</a></li>
                 </ul>
             </li>
+            
             @endif
         </ul>
     </aside>
