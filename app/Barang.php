@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Barang extends Model
 {
     protected $table = 'barangs';
-    protected $fillable =['kode_barang','kategori_id','nama_barang','satuan_id','toko_id','dana_id','room_id','spek','merk','no_seri','tgl_masuk','no_faktur','harga'];
+    protected $fillable =['kode_barang','kategori_id','nama_barang','satuan_id','toko_id','dana_id','room_id','spek','merk','no_seri','tgl_masuk','no_faktur','harga','total'];
     // relasi nya geys ini geys @imam Ganteng
     public function kategori()
     {

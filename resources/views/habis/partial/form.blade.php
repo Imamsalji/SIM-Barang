@@ -3,7 +3,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label @error('kode_barang') class="text-danger" 
-                        @enderror>kode_barang @error('kode_barang')
+                        @enderror>Kode Barang @error('kode_barang')
                              {{ $message }}
                           @enderror
                         </label>
@@ -11,7 +11,6 @@
                       </div>
                     </div>
                     
-
                     <div class="col-md-6">
                       <div class="form-group">
                         <label @error('kategori_id') class="text-danger" 
@@ -32,7 +31,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label @error('nama_barang') class="text-danger" 
-                        @enderror>nama_barang @error('nama_barang')
+                        @enderror>Nama Barang @error('nama_barang')
                              {{ $message }}
                           @enderror
                         </label>
@@ -55,12 +54,19 @@
                         </select>
                       </div>
                     </div>
-                    <!--  
 
-                      dari sini
-
-                    -->
                     <div class="col-md-6">
+                      <div class="form-group">
+                        <label @error('merk') class="text-danger" 
+                        @enderror>Merk @error('merk')
+                             {{ $message }}
+                          @enderror
+                        </label>
+                        <input id="merk" type="text" name="merk" value="{{ old('merk') ?? $habis->merk }}" class="form-control">
+                      </div>
+                    </div>
+
+                  <div class="col-md-6">
                       <div class="form-group">
                         <label @error('toko_id') class="text-danger" 
                         @enderror>Toko @error('toko_id')
@@ -75,7 +81,16 @@
                         </select>
                       </div>
                     </div>
-
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label @error('spek') class="text-danger" 
+                        @enderror>Spesifikasi @error('spek')
+                             {{ $message }}
+                          @enderror
+                        </label>
+                        <input id="spek" type="text" name="spek" value="{{ old('spek') ?? $habis->spek }}" class="form-control">
+                      </div>
+                    </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label @error('dana_id') class="text-danger" 
@@ -94,6 +109,16 @@
 
                     <div class="col-md-6">
                       <div class="form-group">
+                        <label @error('no_seri') class="text-danger" 
+                        @enderror>No Seri @error('no_seri')
+                             {{ $message }}
+                          @enderror
+                        </label>
+                        <input id="no_seri" type="text" name="no_seri" value="{{ old('no_seri') ?? $habis->no_seri }}" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
                         <label @error('room_id') class="text-danger" 
                         @enderror>Bangunan serta Ruangan @error('room_id')
                              {{ $message }}
@@ -107,55 +132,10 @@
                         </select>
                       </div>
                     </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label @error('spek') class="text-danger" 
-                        @enderror>spek @error('spek')
-                             {{ $message }}
-                          @enderror
-                        </label>
-                        <input id="spek" type="text" name="spek" value="{{ old('spek') ?? $habis->spek }}" class="form-control">
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label @error('merk') class="text-danger" 
-                        @enderror>merk @error('merk')
-                             {{ $message }}
-                          @enderror
-                        </label>
-                        <input id="merk" type="text" name="merk" value="{{ old('merk') ?? $habis->merk }}" class="form-control">
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label @error('no_seri') class="text-danger" 
-                        @enderror>no_seri @error('no_seri')
-                             {{ $message }}
-                          @enderror
-                        </label>
-                        <input id="no_seri" type="text" name="no_seri" value="{{ old('no_seri') ?? $habis->no_seri }}" class="form-control">
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label @error('tgl_masuk') class="text-danger" 
-                        @enderror>tgl_masuk @error('tgl_masuk')
-                             {{ $message }}
-                          @enderror
-                        </label>
-                        <input id="tgl_masuk" type="date" name="tgl_masuk" value="{{ old('tgl_masuk') ?? $habis->tgl_masuk }}" class="form-control">
-                      </div>
-                    </div>
-
                     <div class="col-md-6">
                       <div class="form-group">
                         <label @error('no_faktur') class="text-danger" 
-                        @enderror>nofaktur @error('spek')
+                        @enderror>No Faktur @error('spek')
                              {{ $message }}
                           @enderror
                         </label>
@@ -165,12 +145,34 @@
 
                     <div class="col-md-6">
                       <div class="form-group">
+                        <label @error('tgl_masuk') class="text-danger" 
+                        @enderror>Tanggal Masuk @error('tgl_masuk')
+                             {{ $message }}
+                          @enderror
+                        </label>
+                        <input id="tgl_masuk" type="date" name="tgl_masuk" value="{{ old('tgl_masuk') ?? $habis->tgl_masuk }}" class="form-control">
+                      </div>
+                    </div>
+
+                    
+                    <div class="col-md-6">
+                      <div class="form-group">
                         <label @error('harga') class="text-danger" 
-                        @enderror>harga @error('harga')
+                        @enderror>Harga @error('harga')
                              {{ $message }}
                           @enderror
                         </label>
                         <input id="harga" type="text" name="harga" value="{{ old('harga') ?? $habis->harga }}" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label @error('total') class="text-danger" 
+                        @enderror>Total Barang @error('total')
+                             {{ $message }}
+                          @enderror
+                        </label>
+                        <input id="total" type="text" name="total" value="{{ old('total') ?? $habis->total }}" class="form-control">
                       </div>
                     </div>
                     

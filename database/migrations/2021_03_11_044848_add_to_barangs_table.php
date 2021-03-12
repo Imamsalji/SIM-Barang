@@ -25,7 +25,6 @@ class AddToBarangsTable extends Migration
             $table->string('harga')->after('no_faktur');
             $table->dropColumn('kondisi_baik');
             $table->dropColumn('kondisi_rusak');
-            $table->dropColumn('total');
             
         });
     }

@@ -28,6 +28,7 @@ class CreateHabisTable extends Migration
             $table->string('tgl_masuk');
             $table->string('no_faktur');
             $table->string('harga');
+            $table->string('total');
             $table->timestamps();
         });
     }

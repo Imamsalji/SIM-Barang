@@ -42,6 +42,8 @@ class BarangController extends Controller
             'tgl_masuk' => $request->tgl_masuk,
             'no_faktur' => $request->no_faktur,
             'harga' => $request->harga,
+            'total' => $request->total,
+
         ]);
 
         return redirect('barang')->with('message', 'Data berhasil disimpan');

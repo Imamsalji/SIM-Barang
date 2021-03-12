@@ -39,34 +39,37 @@
                             <tr>
                                 <th>No</th>
                                 <th>Kode Barang</th>
-                                <th>nama barang</th>
+                                <th>Nama Barang</th>
+                                <th>Merek</th>
                                 <th>Spesifikasi</th>
-                                <th>merek</th>
-                                <th>no_seri</th>
-                                <th>Tanggal Masuk</th>
+                                <th>No Seri</th>
                                 <th>No faktur</th>
                                 <th>Harga</th>
-                                <th>toko</th>
-                                <th>sumber dana</th>
-                                <th>kategori</th>
+                                <th>Toko</th>
+                                <th>Sumber Dana</th>
+                                <th>Kategori</th>
+                                <th>Tanggal Masuk</th>
+                                <th>Total Barang</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($barangs as $item)
                             <tr> 
-                                <td>{{ $loop->iteration }}</td>
+                            <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->kode_barang }}</td>
                                 <td>{{ $item->nama_barang }}</td>
-                                <td>{{ $item->spek }}</td>
                                 <td>{{ $item->merk }}</td>
+                                <td>{{ $item->spek }}</td>
                                 <td>{{ $item->no_seri }}</td>
-                                <td>{{ $item->tgl_masuk }}</td>
                                 <td>{{ $item->no_faktur }}</td>
                                 <td>{{ $item->harga }}</td>
                                 <td>{{ $item->toko->name }}</td>
                                 <td>{{ $item->dana->pemberi }}</td>
                                 <td>{{ $item->kategori->name }}</td>
+                                <td>{{ $item->tgl_masuk }}</td>
+                                <td>{{ $item->total }}</td>
+
                                 <td>
                                     <a href="{{route('barangedit', $item->id)}}" class="btn btn-outline-warning">Edit</a>
                                     <a href="{{route('hapusbarang', $item->id)}}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">Delete</a>

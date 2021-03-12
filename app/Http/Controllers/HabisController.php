@@ -57,6 +57,8 @@ class HabisController extends Controller
             'tgl_masuk' => $request->tgl_masuk,
             'no_faktur' => $request->no_faktur,
             'harga' => $request->harga,
+            'total' => $request->total,
+
         ]);
 
         return redirect('habis')->with('message', 'Data berhasil disimpan');
@@ -133,6 +135,8 @@ class HabisController extends Controller
             'tgl_masuk' => 'required',
             'no_faktur' => 'required',
             'harga' => 'required',
+            'total' => 'required',
+
         ],
         [
             'kode_barang.required' => 'harus diisi!',
@@ -148,6 +152,8 @@ class HabisController extends Controller
             'tgl_masuk.required' => 'harus diisi!',
             'no_faktur.required' => 'harus diisi!',
             'harga.required' => 'harus diisi!',
+            'total.required' => 'harus diisi!',
+
         ]);
     }
 }
