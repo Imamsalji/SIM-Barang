@@ -27,5 +27,9 @@ class room extends Model
     {
         return $this->hasMany(barang::class);
     }
+    public function habis()
+    {
+        return $this->hasMany(Peminjaman::class);
+    }
     
 }

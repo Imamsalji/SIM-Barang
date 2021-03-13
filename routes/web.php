@@ -91,13 +91,20 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::post('/klasifikasi/store', 'RoomController@klasifikasistore')->name('klasifikasisave');
     Route::post('/rayon/store', 'RoomController@rayonstore')->name('rayonsave');
 
-    //pinjaman
+    //pinjaman tidak habis pakai
     Route::get('/pinjam', 'PinjamController@index')->name('pinjam');
     Route::get('/pinjam/create', 'PinjamController@create')->name('pinjamcreate');
     Route::post('/pinjam/store', 'PinjamController@store')->name('pinjamsave');
     Route::get('/pinjam/edit/{id}', 'PinjamController@edit')->name('pinjamedit');
     Route::post('/pinjam/update/{id}', 'PinjamController@update')->name('pinjamupdate');
     Route::delete('/pinjam/{id}', 'PinjamController@destroy')->name('pinjamhapus');
+    
+    //pinjaman habis pakai
+     Route::get('/peminjaman', 'PeminjamanController@index')->name('peminjaman');
+     Route::get('/peminjaman/create', 'PeminjamanController@create')->name('peminjamancreate');
+     Route::post('/peminjaman/store', 'PeminjamanController@store')->name('peminjamansave');
+     Route::delete('/peminjaman/{id}', 'PeminjamanController@destroy')->name('peminjamanhapus');
+ 
 
     //laporan pinjam
     Route::get('/laporanpinjam','LaporanPinjamController@index')->name('laporanpinjam');

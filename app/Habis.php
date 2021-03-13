@@ -29,4 +29,8 @@ class Habis extends Model
     {
         return $this->belongsTo(room::class);
     }
+    public function habis()
+    {
+        return $this->hasMany(Peminjaman::class);
+    }
 }

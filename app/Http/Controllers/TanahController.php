@@ -13,9 +13,9 @@ class TanahController extends Controller
         return view('Tanah.index', compact('tanahs'));
     }
 
-    public function create(Tanah $Tanah)
+    public function create(Tanah $tanah)
     {
-        return view('Tanah.create',compact('Tanah'));
+        return view('Tanah.create',compact('tanah'));
     }
 
     public function store(Request $request)

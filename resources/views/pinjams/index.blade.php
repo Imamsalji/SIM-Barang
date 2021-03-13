@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Data Peminjaman')
 @section('pagetitle')
+    <img alt="image" src="{{ asset('../assets/img/logo-wk.png') }}" class="rounded-circle mr-1" style="width: 50px">
     <h1>Data Peminjaman</h1>
 @endsection
 @section('content')

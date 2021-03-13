@@ -1,14 +1,20 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
       <div class="sidebar-brand">
-        <a href="#">SIM Inventaris Barang</a>
+        <a href="#">
+            <img alt="image" src="{{ asset('../assets/img/logo-wk.png') }}" class="rounded-circle mr-1" style="width: 50px">
+        </a>
+        <a href="#">Inventaris Barang</a>
       </div>
       <div class="sidebar-brand sidebar-brand-sm">
-        <a href="#">SIM Inventaris Barang</a>
+        <a href="#">
+            <img alt="image" src="{{ asset('../assets/img/logo-wk.png') }}" class="rounded-circle mr-1" style="width: 38px">
+        </a>
       </div>
       <ul class="sidebar-menu">
 
           <li class="menu-header">Dashboard</li>
+          
           <li class="nav-item dropdown">
             <a href="{{ route('dashboard') }}" class="nav-link ">
               <i class="fas fa-fire"></i>
@@ -76,7 +82,8 @@
                     <span>Transaksi Barang Keluar</span>
                     </a>
                 <ul class="dropdown-menu">
-                    <li class=""><a class="nav-link" href="{{ url('pinjam') }}">Data Peminjaman Barang</a></li>
+                    <li class=""><a class="nav-link" href="{{ url('pinjam') }}">Data Peminjaman BTHP</a></li>
+                    <li class=""><a class="nav-link" href="{{ url('peminjaman') }}">Data Peminjaman BHP</a></li>
                     <li class=""><a class="nav-link" href="">Data Mutasi</a></li>
                     <li class=""><a class="nav-link" href="">Penghapusan Barang</a></li>
                 </ul>

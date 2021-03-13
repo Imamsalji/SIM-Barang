@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <meta name="author" content="Muhammad Ridwan Pratama">
+  <meta name="author" content="SIM BARANG INVENTARIS">
+  
   <title>Login</title>
 
   <!-- General CSS Files -->
@@ -28,7 +29,10 @@
             </div>
 
             <div class="card card-primary">
-              <div class="card-header"><h4>Login</h4></div>
+              <div class="card-header">
+                <img alt="image" src="{{ asset('../assets/img/logo-wk.png') }}" class="rounded-circle mr-1" style="width: 35px">              
+                <h4>Selamat Datang Di Website Kami</h4>
+              </div>
 
               <div class="card-body">
                 <form method="POST" action="{{ route('postlogin') }}" class="needs-validation" novalidate="">

@@ -10,7 +10,7 @@
         <div class="col-12 col-md-12 col-lg-12">
            <div class="card">
                <div class="card-body">
-                 <form action="{{ route('pinjamsave') }}" method="POST">
+                 <form action="{{ route('peminjamansave') }}" method="POST">
                    @csrf
                   <div class="row">
 
@@ -49,7 +49,7 @@
                         </label>
                         <select class="form-control" name="barang_id" id="barang_id">
                             <option value disable>Pilih Barang</option>
-                            @foreach ($barangs as $item)
+                            @foreach ($habis as $item)
                             <option value="{{ $item->id }}" data-stok="{{ $item->total }}">{{ $item->nama_barang }}</option>
                             @endforeach
                           </select>
@@ -67,26 +67,12 @@
                         </div>
                       </div>
 
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label @error('kondisi') class="text-danger" 
-                          @enderror>Kondisi @error('kondisi')
-                               {{ $message }}
-                            @enderror
-                          </label>
-                          <select class="form-control" name="kondisi" id="kondisi">
-                            <option value disable>Pilih Kondisi</option>
-                                <option value="baik">Baik</option>
-                                <option value="tidakbaik">Tidak Baik</option>
-                          </select>
-                        </div>
-                      </div>
-
+                     
                   </div>
                   <div class="card-footer text-right">
                       <button class="btn btn-primary mr-1" type="submit">Submit</button>
                       <button class="btn btn-secondary" type="reset">Reset</button>
-                      <a href="{{ route('pinjam') }}" class="btn btn-icon icon-left btn-primary">Cancel</a>
+                      <a href="{{ route('peminjaman') }}" class="btn btn-icon icon-left btn-primary">Cancel</a>
                   </div>
                  </form>
             </div>

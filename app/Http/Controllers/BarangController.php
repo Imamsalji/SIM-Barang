@@ -65,9 +65,9 @@ class BarangController extends Controller
     {
         $kategori = kategori::where('name',$request->name)->first();
         if ($kategori === NULL) {
-            dd($request->name);
+            //dd($request->name);
         }else {
-            dd($kategori->name);
+            //dd($kategori->name);
         }
 
         kategori::create([
