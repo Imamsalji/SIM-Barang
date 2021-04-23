@@ -28,19 +28,20 @@ class RoomController extends Controller
         $luas = $request->panjang * $request->lebar;
         room::create([
             'klasifikasi_id' => $request->klasifikasi_id,
+            'tanah_id' => $request->tanah_id,
             'noruang' => $request->noruang,
             'nama_ruang' => $request->nama_ruang,
             'rayon_id' => $request->rayon_id,
-            'tanah_id' => $request->tanah_id,
             'pjruangan' => $request->pjruangan,
             'panjang' => $request->panjang,
             'lebar' => $request->lebar,
+            'luas' => $luas,
             'regis' => $request->regis,
             'dana_id' => $request->dana_id,
             'kondisi_bangunan' => $request->kondisi_bangunan,
             'bertingkat' => $request->bertingkat,
             'beton' => $request->beton,
-            'luas' => $luas,
+            
         ]);
 
         return redirect('ruangan')->with('message', 'Data berhasil disimpan');

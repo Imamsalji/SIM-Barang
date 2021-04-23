@@ -32,7 +32,7 @@
               <ul class="dropdown-menu">
               <li class="{{ request()->is('users/user') ? 'active' : '' }}"><a class="nav-link" href="{{ route('user') }}">Semua User</a></li>
                     <li class="{{ request()->is('users/admin') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin', 'admin')}}">Admin</a></li>
-                    <li class="{{ request()->is('users/distributor') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin', 'distributor')}}">Distributor</a></li>
+                    <!--<li class="{{ request()->is('users/distributor') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin', 'distributor')}}">Distributor</a></li>-->
                     <li class="{{ request()->is('users/pjruangan') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin', 'pjruangan')}}">Pj Ruangan</a></li>
                 </ul>
             </li>
@@ -82,8 +82,10 @@
                     <span>Transaksi Barang Keluar</span>
                     </a>
                 <ul class="dropdown-menu">
-                    <li class=""><a class="nav-link" href="{{ url('pinjam') }}">Data Peminjaman BTHP</a></li>
-                    <li class=""><a class="nav-link" href="{{ url('peminjaman') }}">Data Peminjaman BHP</a></li>
+                    <li class=""><a class="nav-link" href="{{ url('pinjam') }}">Data Peminjaman Barang Tidak Habis Pakai</a></li>
+                    <br>
+                    <li class=""><a class="nav-link" href="{{ url('peminjaman') }}">Data Peminjaman Barang Habis Pakai</a></li>
+                    <br>
                     <li class=""><a class="nav-link" href="">Data Mutasi</a></li>
                     <li class=""><a class="nav-link" href="">Penghapusan Barang</a></li>
                 </ul>
@@ -95,13 +97,21 @@
                     </a>
                 <ul class="dropdown-menu">
                     <li class=""><a class="nav-link" href="{{ url('laporanpinjam') }}">Laporan Pengembalian Barang</a></li>
+                    <br>
                     <li class=""><a class="nav-link" href="">Laporan Barang Habis Pakai</a></li>
+                    <br>
                     <li class=""><a class="nav-link" href="">Laporan Barang Tidak Habis Pakai</a></li>
+                    <br>                    
                     <li class=""><a class="nav-link" href="">Laporan Tanah</a></li>
+                    <br>
                     <li class=""><a class="nav-link" href="">Laporan Bangunan dan Ruangan</a></li>
+                    <br>
                     <li class=""><a class="nav-link" href="">Laporan Mutasi</a></li>
+                    <br>
                     <li class=""><a class="nav-link" href="">Laporan Penghapusan Barang</a></li>
+                    <br>
                     <li class=""><a class="nav-link" href="">Cetak Lebel</a></li>
+                    <br>
                     <li class=""><a class="nav-link" href="">Scan QrCode</a></li>
                 </ul>
             </li>
