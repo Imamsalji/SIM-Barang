@@ -25,6 +25,8 @@ Route::get('login', function () {
 Route::post('postlogin', 'LoginController@login')->name('postlogin');
 Route::get('logout', 'LoginController@logout')->name('logout');
 
+
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 });
@@ -115,6 +117,13 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::post('/Tanah/update/{id}', 'TanahController@update')->name('Tanahupdate');
 
     Route::resource('habis','HabisController');
+
+    //Perbaikan
+    Route::get('/perbaikan', 'PerbaikanController@upload'); 
+    Route::get('/perbaikan/create', 'PerbaikanController@create');
+    Route::post('/perbaikan/store', 'PerbaikanController@store');
+    Route::get('/delete_perbaikan/{id}', 'PerbaikanController@destroy')->name('delete_perbaikan');
+
 
 
 });

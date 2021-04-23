@@ -58,7 +58,7 @@
                     <span>Perbaikan</span>
                     </a>
                 <ul class="dropdown-menu">
-                    <li class=""><a class="nav-link" href="">Perbaikan</a></li>
+                    <li class=""><a class="nav-link" href="{{ url('perbaikan') }}">Perbaikan</a></li>
                    
                 </ul>
             </li>
