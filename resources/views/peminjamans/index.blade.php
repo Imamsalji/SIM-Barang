@@ -49,7 +49,7 @@
                             <tr> 
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $peminjaman->pj}}</td>
-                                <td>{{ $peminjaman->ruang}}</td>
+                                <td>{{ $peminjaman->rooms->noruang}}</td>
                                 <td>{{ $peminjaman->habis->nama_barang}}</td>
                                 <td>{{ $peminjaman->jumlah}}</td>
                                 <td>

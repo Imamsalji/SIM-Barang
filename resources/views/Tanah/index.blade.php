@@ -10,6 +10,9 @@
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
            <a href="{{ route('Tanah.create') }}" class="btn btn-outline-primary"><i class="far fa-edit"></i>Tambah Data</a>
+           <a href="{{ route('tanah') }}" class="btn btn-outline-primary"><i class="far fa-edit"></i>print tanah</a>
+           <a href="{{ route('alat') }}" class="btn btn-outline-primary"><i class="far fa-edit"></i>print alat</a>
+           <a href="{{ route('room') }}" class="btn btn-outline-primary"><i class="far fa-edit"></i>print bangunan</a>
            <hr>
            <div class="card">
                <div class="card-body">
@@ -54,7 +57,19 @@
                             @foreach ($tanahs as $pinjam)
                             <tr> 
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $pinjam->kode_tanah}}</td>
+                                @if ($rowCount > 0)
+                                @if ($pinjam->id < 9)
+                                <td>T0000{{ $pinjam->id }}</td>
+                                @elseif ($pinjam->id < 99)
+                                <td>T000{{ $pinjam->id  }}</td>
+                                @elseif ($pinjam->id < 999)
+                                <td>T00{{ $pinjam->id }}</td>
+                                @elseif ($pinjam->id < 9999)
+                                <td>T0{{ $pinjam->id }}</td>
+                                @else
+                                <td>{{ $pinjam->id  }}</td>
+                                @endif
+                                @endif
                                 <td>{{ $pinjam->register}}</td>
                                 <td>{{ $pinjam->luas}}</td>
                                 <td>{{ $pinjam->thn_pengadaan}}</td>

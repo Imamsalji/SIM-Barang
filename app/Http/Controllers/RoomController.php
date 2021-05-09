@@ -9,8 +9,13 @@ class RoomController extends Controller
 {
     public function index()
     {
+        $getRow = Tanah::orderBy('id', 'DESC')->get();
+        $rowCount = $getRow->count();
         $rooms = room::all();
-	    return view ('ruangan.index',['rooms' => $rooms]);
+	    return view ('ruangan.index',[
+            'rooms' => $rooms,
+            'rowCount' => $rowCount
+            ]);
     }
 
     public function create(room $room)

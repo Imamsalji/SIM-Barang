@@ -32,9 +32,9 @@
                              {{ $message }}
                           @enderror
                         </label>
-                        <select class="form-control" name="ruang" id="ruang">
+                        <select class="form-control" name="ruang_id" id="ruang_id">
                             @foreach($rooms as $room)
-                                <option value="{{$room->noruang}}">{{$room->noruang}}</option>
+                                <option value="{{$room->id}}">{{$room->noruang}}</option>
                             @endforeach
                         </select>
                       </div>

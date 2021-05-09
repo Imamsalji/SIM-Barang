@@ -49,7 +49,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Ruang</strong>
-                    <input type="text" name="ruang" value="{{ $pinjam->ruang }}" class="form-control">
+                    <input type="text" name="ruang" value="{{ $pinjam->rooms->noruang }}" class="form-control">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

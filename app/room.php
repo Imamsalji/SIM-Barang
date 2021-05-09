@@ -29,6 +29,14 @@ class room extends Model
     }
     public function habis()
     {
+        return $this->hasMany(Habis::class);
+    }
+    public function pinjam()
+    {
+        return $this->hasMany(Pinjam::class);
+    }
+    public function peminjaman()
+    {
         return $this->hasMany(Peminjaman::class);
     }
     

@@ -69,7 +69,10 @@
             </div>
           </div>
         </div>
-      </div>       
+      </div>  
+      <div class="visible-print text-center">
+        {!! QrCode::size(100)->generate($room); !!}
+    </div>     
 </div>
 @endsection
 

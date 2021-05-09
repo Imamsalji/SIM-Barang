@@ -45,7 +45,7 @@ class PeminjamanController extends Controller
     {
         $request->validate([
             'pj' => 'required',
-            'ruang' => 'required',
+            'ruang_id' => 'required',
             'barang_id' => 'required',
             'jumlah' => 'required',
            
@@ -61,7 +61,7 @@ class PeminjamanController extends Controller
 
        Peminjaman::create([
            'pj' => $request->pj,
-           'ruang' => $request->ruang,
+           'ruang_id' => $request->ruang_id,
            'barang_id' => $request->barang_id,
            'jumlah' => $request->jumlah,
            

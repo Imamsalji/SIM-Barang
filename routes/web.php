@@ -124,6 +124,14 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::post('/perbaikan/store', 'PerbaikanController@store');
     Route::get('/delete_perbaikan/{id}', 'PerbaikanController@destroy')->name('delete_perbaikan');
 
+    //laporan
+    Route::get('/tanahprint', 'LaporanPinjamController@printtanah')->name('tanah');
+    Route::get('/alatprint', 'LaporanPinjamController@printalat')->name('alat');
+    Route::get('/ruanganprint', 'LaporanPinjamController@printroom')->name('room');
+    Route::get('/Kib-A', 'LaporanPinjamController@tanah')->name('kiba');
+    Route::get('/Kib-B', 'LaporanPinjamController@alat')->name('kibb');
+    Route::get('/Kib-C', 'LaporanPinjamController@ruangan')->name('kibc');
+
 
 
 });

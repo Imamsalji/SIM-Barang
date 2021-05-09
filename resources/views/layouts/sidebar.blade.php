@@ -76,35 +76,31 @@
 
                 </ul>
             </li>
-            <li class="nav-item dropdown {{ request()->is('input') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ request()->is('pinjam') ? 'active' : '' }} {{ request()->is('peminjaman') ? 'active' : '' }} ">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                 <i class="fas fa-handshake"></i>
                     <span>Transaksi Barang Keluar</span>
                     </a>
                 <ul class="dropdown-menu">
-                    <li class=""><a class="nav-link" href="{{ url('pinjam') }}">Data Peminjaman Barang Tidak Habis Pakai</a></li>
+                    <li class="{{ request()->is('pinjam') ? 'active' : '' }}"><a class="nav-link" href="{{ url('pinjam') }}">Data Peminjaman Barang Tidak Habis Pakai</a></li>
                     <br>
-                    <li class=""><a class="nav-link" href="{{ url('peminjaman') }}">Data Peminjaman Barang Habis Pakai</a></li>
+                    <li class="{{ request()->is('peminjaman') ? 'active' : '' }}"><a class="nav-link" href="{{ url('peminjaman') }}">Data Peminjaman Barang Habis Pakai</a></li>
                     <br>
                     <li class=""><a class="nav-link" href="">Data Mutasi</a></li>
                     <li class=""><a class="nav-link" href="">Penghapusan Barang</a></li>
                 </ul>
             </li>
-            <li class="nav-item dropdown ">
+            <li class="nav-item dropdown {{ request()->is('Kib-A') ? 'active' : '' }} {{ request()->is('laporanpinjam') ? 'active' : '' }} {{ request()->is('Kib-B') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                 <i class="fas fa-file-alt"></i>
                     <span>Laporan</span>
                     </a>
                 <ul class="dropdown-menu">
-                    <li class=""><a class="nav-link" href="{{ url('laporanpinjam') }}">Laporan Pengembalian Barang</a></li>
+                    <li class="{{ request()->is('Kib-A') ? 'active' : '' }}"><a class="nav-link" href="{{ route('kiba') }}">Kartu Inventaris Barang (KIB) A</a></li>
                     <br>
-                    <li class=""><a class="nav-link" href="">Laporan Barang Habis Pakai</a></li>
-                    <br>
-                    <li class=""><a class="nav-link" href="">Laporan Barang Tidak Habis Pakai</a></li>
+                    <li class="{{ request()->is('Kib-B') ? 'active' : '' }}"><a class="nav-link" href="{{ route('kibb') }}">Kartu Inventaris Barang (KIB) B</a></li>
                     <br>                    
-                    <li class=""><a class="nav-link" href="">Laporan Tanah</a></li>
-                    <br>
-                    <li class=""><a class="nav-link" href="">Laporan Bangunan dan Ruangan</a></li>
+                    <li class="{{ request()->is('Kib-C') ? 'active' : '' }}"><a class="nav-link" href="{{ route('kibc') }}">Kartu Inventaris Barang (KIB) C</a></li>
                     <br>
                     <li class=""><a class="nav-link" href="">Laporan Mutasi</a></li>
                     <br>
@@ -112,7 +108,6 @@
                     <br>
                     <li class=""><a class="nav-link" href="">Cetak Lebel</a></li>
                     <br>
-                    <li class=""><a class="nav-link" href="">Scan QrCode</a></li>
                 </ul>
             </li>
             

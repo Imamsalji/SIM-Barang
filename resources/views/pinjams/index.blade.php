@@ -2,7 +2,7 @@
 @section('title', 'Data Peminjaman')
 @section('pagetitle')
     <img alt="image" src="{{ asset('../assets/img/logo-wk.png') }}" class="rounded-circle mr-1" style="width: 50px">
-    <h1>Data Peminjaman</h1>
+    <h1>Data Peminjaman Barang Tidak Habis pakai</h1>
 @endsection
 @section('content')
 
@@ -50,7 +50,7 @@
                             <tr> 
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $pinjam->pj}}</td>
-                                <td>{{ $pinjam->ruang}}</td>
+                                <td>{{ $pinjam->rooms->noruang}}</td>
                                 <td>{{ $pinjam->barangs->nama_barang}}</td>
                                 <td>{{ $pinjam->jumlah}}</td>
                                 <td>{{ $pinjam->kondisi}}</td>

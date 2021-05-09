@@ -9,8 +9,12 @@ class TanahController extends Controller
 {
     public function index()
     {
+        $getRow = Tanah::orderBy('id', 'DESC')->get();
+        $rowCount = $getRow->count();
+        
+        $lastId = $getRow->first();
         $tanahs = Tanah::all();
-        return view('Tanah.index', compact('tanahs'));
+        return view('Tanah.index', compact('tanahs','getRow','rowCount','lastId'));
     }
 
     public function create(Tanah $tanah)

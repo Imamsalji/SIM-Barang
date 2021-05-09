@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\LaporanPinjam;
+use App\{LaporanPinjam,Pinjam,Peminjaman};
+use PDF;
 
 class LaporanPinjamController extends Controller
 {
@@ -18,6 +19,33 @@ class LaporanPinjamController extends Controller
 
         return view('laporanpinjams\index',compact('laporanpinjams'))
         ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function tanah()
+    {
+        $getRow = Pinjam::orderBy('id', 'DESC')->get();
+        $row = Peminjaman::orderBy('id', 'DESC')->get()->count();
+        $rowCount = $getRow->count();
+        $pinjams=Pinjam::all();
+        $pinjamans=Peminjaman::all();
+
+        return view('laporan.kiba',compact('pinjams','rowCount','row','pinjamans'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    public function alat()
+    {
+        $pinjamans=Peminjaman::all();
+        $pinjams=Pinjam::all();
+        return view('laporan.kibb',compact('pinjamans','pinjams'));
+    }
+
+    public function ruangan()
+    {
+        $getRow = Pinjam::orderBy('id', 'DESC')->get();
+        $rowCount = $getRow->count();
+        $pinjams=Pinjam::all();
+
+        return view('laporan.kibc',compact('pinjams','rowCount'));
     }
     /**
      * Display the specified resource.
@@ -72,5 +100,33 @@ class LaporanPinjamController extends Controller
             return view('laporanpinjams.print', compact('laporanpinjams', 'redirect'))->with('i', (request()->input('page', 1) - 1) * 5);
         }
   
+    }
+    public function printtanah()
+    {
+        $getRow = Pinjam::orderBy('id', 'DESC')->get();
+        $row = Peminjaman::orderBy('id', 'DESC')->get()->count();
+        $rowCount = $getRow->count();
+        $pinjams=Pinjam::all();
+        $pinjamans=Peminjaman::all();
+        $pdf = PDF::loadview('laporanpinjams.tanah',compact('pinjams','rowCount','row','pinjamans'))->setPaper('A4','landscape');
+        return $pdf->stream();
+    }
+
+    public function printalat()
+    {
+        $getRow = Pinjam::orderBy('id', 'DESC')->get();
+        $pinjamans=Peminjaman::all();
+        $pinjams=Pinjam::all();
+        $pdf = PDF::loadview('laporanpinjams.alat',compact('pinjams','pinjamans'))->setPaper('A4','landscape');
+        return $pdf->stream();
+    }
+
+    public function printroom()
+    {
+        $getRow = Pinjam::orderBy('id', 'DESC')->get();
+        $rowCount = $getRow->count();
+        $pinjams=Pinjam::all();
+        $pdf = PDF::loadview('laporanpinjams.room',compact('rowCount','pinjams'))->setPaper('A4','landscape');
+        return $pdf->stream();
     }
 }

@@ -67,7 +67,19 @@
                                 <td>{{ $item->luas }}</td>
                                 <td>{{ $item->tanah->status_tanah }}</td>
                                 <td>{{ $item->tanah->luas }}</td>
-                                <td>{{ $item->tanah->kode_tanah }}</td>
+                                @if ($rowCount > 0)
+                                @if ($item->tanah->id < 9)
+                                <td>T0000{{ $item->tanah->id }}</td>
+                                @elseif ($item->tanah->id < 99)
+                                <td>T000{{ $item->tanah->id  }}</td>
+                                @elseif ($item->tanah->id < 999)
+                                <td>T00{{ $item->tanah->id }}</td>
+                                @elseif ($item->tanah->id < 9999)
+                                <td>T0{{ $item->tanah->id }}</td>
+                                @else
+                                <td>{{ $item->tanah->id  }}</td>
+                                @endif
+                                @endif
                                 <td>{{ $item->tanah->no_sertifikat }}</td>
                                 <td>
                                     <a href="{{url('/ruangan/edit', $item->id)}}" class="btn btn-outline-warning">Edit</a>
