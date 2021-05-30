@@ -25,8 +25,6 @@ Route::get('login', function () {
 Route::post('postlogin', 'LoginController@login')->name('postlogin');
 Route::get('logout', 'LoginController@logout')->name('logout');
 
-
-
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 });
@@ -118,20 +116,14 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
 
     Route::resource('habis','HabisController');
 
-    //Perbaikan
-    Route::get('/perbaikan', 'PerbaikanController@upload'); 
-    Route::get('/perbaikan/create', 'PerbaikanController@create');
-    Route::post('/perbaikan/store', 'PerbaikanController@store');
-    Route::get('/delete_perbaikan/{id}', 'PerbaikanController@destroy')->name('delete_perbaikan');
 
-    //laporan
-    Route::get('/tanahprint', 'LaporanPinjamController@printtanah')->name('tanah');
-    Route::get('/alatprint', 'LaporanPinjamController@printalat')->name('alat');
-    Route::get('/ruanganprint', 'LaporanPinjamController@printroom')->name('room');
-    Route::get('/Kib-A', 'LaporanPinjamController@tanah')->name('kiba');
-    Route::get('/Kib-B', 'LaporanPinjamController@alat')->name('kibb');
-    Route::get('/Kib-C', 'LaporanPinjamController@ruangan')->name('kibc');
-
+    //Data mutasi
+    Route::get('/mutasi', 'MutasiController@index')->name('mutasi');
+    Route::get('/create_mutasi', 'MutasiController@create')->name('mutasicreate');
+    Route::post('/mutasi/store', 'MutasiController@store')->name('mutasisave');
+    Route::get('/mutasi/edit/{id}', 'MutasiController@edit')->name('mutasiedit');
+    Route::post('/mutasi/update/{id}', 'MutasiController@update')->name('mutasiupdate');
+    Route::get('/mutasi/delete/{id}', 'MutasiController@destroy')->name('mutasihapus');
 
 
 });
